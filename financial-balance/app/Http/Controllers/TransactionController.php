@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -78,5 +79,34 @@ class TransactionController extends Controller
         }
 
         return view('financial.cash_flow_statement', compact('cashFlow'));
+    }
+
+    public function horizontalAnalysis()
+    {
+        $transactions = Transaction::all()->groupBy(function($date) {
+            return Carbon::parse($date->transaction_date)->format('Y-m');
+        });
+
+        $analysis = [];
+        $previousMonthNet = null;
+
+        foreach ($transactions as $month => $monthTransactions) {
+            $netAmount = $monthTransactions->sum('amount');
+
+            if ($previousMonthNet !== null) {
+                $variation = ($netAmount - $previousMonthNet) / $previousMonthNet * 100;
+            } else {
+                $variation = 0;
+            }
+
+            $analysis[$month] = [
+                'net' => $netAmount,
+                'variation' => $variation
+            ];
+
+            $previousMonthNet = $netAmount;
+        }
+
+        return view('financial.horizontal_analysis', compact('analysis'));
     }
 }
