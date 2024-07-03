@@ -23,3 +23,4 @@ Route::resource('transactions', TransactionController::class);
 Route::get('financial/balance-sheet', [TransactionController::class, 'balanceSheet'])->name('financial.balance_sheet');
 Route::get('financial/cash-flow-statement', [TransactionController::class, 'cashFlowStatement'])->name('financial.cash_flow_statement');;
 Route::get('financial/horizontal-analysis', [TransactionController::class, 'horizontalAnalysis'])->name('financial.horizontal_analysis');
+Route::get('financial/financial-ratios', [TransactionController::class, 'financialRatios'])->name('financial.financial_ratios');

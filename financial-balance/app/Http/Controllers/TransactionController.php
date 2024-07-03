@@ -109,4 +109,29 @@ class TransactionController extends Controller
 
         return view('financial.horizontal_analysis', compact('analysis'));
     }
+
+    public function financialRatios()
+    {
+        // Calcular os valores necessários para os índices
+        $totalAssets = Transaction::where('amount', '>', 0)->sum('amount');
+        $totalLiabilities = Transaction::where('amount', '<', 0)->sum('amount');
+        $totalRevenue = Transaction::where('amount', '>', 0)->sum('amount');
+        $totalExpenses = Transaction::where('amount', '<', 0)->sum('amount');
+        
+        $liquidityRatio = $totalLiabilities != 0 ? $totalAssets / abs($totalLiabilities) : null;
+
+        $netIncome = $totalRevenue + $totalExpenses; // Expenses are negative
+        $netProfitability = $totalRevenue != 0 ? ($netIncome / $totalRevenue) * 100 : null;
+
+        $debtRatio = $totalAssets != 0 ? abs($totalLiabilities) / $totalAssets : null;
+
+        $assetTurnoverRatio = $totalAssets != 0 ? $totalRevenue / $totalAssets : null;
+
+        return view('financial.financial_ratios', compact(
+            'liquidityRatio', 
+            'netProfitability', 
+            'debtRatio', 
+            'assetTurnoverRatio'
+        ));
+    }
 }
