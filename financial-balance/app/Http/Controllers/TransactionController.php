@@ -52,4 +52,31 @@ class TransactionController extends Controller
         $transaction->delete();
         return redirect()->route('transaction.index')->with('success', 'Transaction deleted successfully.');
     }
+
+    // Método para o Balanço Patrimonial
+    public function balanceSheet()
+    {
+        $assets = Transaction::where('amount', '>', 0)->sum('amount');
+        $liabilities = Transaction::where('amount', '<', 0)->sum('amount');
+        $equity = $assets + $liabilities;
+
+        return view('financial.balance_sheet', compact('assets', 'liabilities', 'equity'));
+    }
+
+    // Método para a Demonstração do Fluxo de Caixa
+    public function cashFlowStatement()
+    {
+        $transactions = Transaction::all()->groupBy(function($date) {
+            return \Carbon\Carbon::parse($date->transaction_date)->format('Y-m');
+        });
+
+        $cashFlow = [];
+        foreach ($transactions as $month => $monthTransactions) {
+            $cashFlow[$month]['inflows'] = $monthTransactions->where('amount', '>', 0)->sum('amount');
+            $cashFlow[$month]['outflows'] = $monthTransactions->where('amount', '<', 0)->sum('amount');
+            $cashFlow[$month]['net'] = $cashFlow[$month]['inflows'] + $cashFlow[$month]['outflows'];
+        }
+
+        return view('financial.cash_flow_statement', compact('cashFlow'));
+    }
 }
