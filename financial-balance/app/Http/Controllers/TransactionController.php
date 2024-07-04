@@ -110,6 +110,24 @@ class TransactionController extends Controller
         return view('financial.horizontal_analysis', compact('analysis'));
     }
 
+    public function verticalAnalysis()
+    {
+        $totalAssets = Transaction::where('amount', '>', 0)->sum('amount');
+        $totalLiabilities = Transaction::where('amount', '<', 0)->sum('amount');
+        $totalEquity = $totalAssets + $totalLiabilities;
+        $total = $totalAssets + abs($totalLiabilities);
+
+        $assetsPercentage = $total != 0 ? ($totalAssets / $total) * 100 : 0;
+        $liabilitiesPercentage = $total != 0 ? (abs($totalLiabilities) / $total) * 100 : 0;
+        $equityPercentage = $total != 0 ? ($totalEquity / $total) * 100 : 0;
+
+        return view('financial.vertical_analysis', compact(
+            'assetsPercentage',
+            'liabilitiesPercentage',
+            'equityPercentage'
+        ));
+    }
+
     public function financialRatios()
     {
         // Calcular os valores necessários para os índices
@@ -133,5 +151,16 @@ class TransactionController extends Controller
             'debtRatio', 
             'assetTurnoverRatio'
         ));
+    }
+
+    public function financialCompare()
+    {
+        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        $months = $transactions->pluck('month')->unique()->sort();
+        $years = $transactions->pluck('year')->unique()->sort();
+        $years = array_combine($years, $years);
+        $months = array_combine($months, $months);
+        $years = array_keys($years);
+        $months = array_keys($months);
     }
 }
