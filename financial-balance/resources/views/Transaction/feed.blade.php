@@ -35,6 +35,7 @@
         <button type="button" id="add-transaction" class="btn btn-secondary mt-3">Adicionar Outra Transação</button>
         <button type="submit" class="btn btn-primary mt-3">Adicionar Transações</button>
     </form>
+    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
 </div>
 
 <script>

@@ -37,5 +37,6 @@
         </div>
         <button type="submit" class="btn btn-primary mt-3">Adicionar</button>
     </form>
+    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
 </div>
 @endsection
