@@ -22,13 +22,23 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required',
             'amount' => 'required|numeric',
-            'transaction_date' => 'required|date',
+            'type' => 'required|in:revenue,expense', 
+            'description' => 'nullable|string|max:255',
+            'date' => 'required|date',
+            'profit_or_cost' => 'required|in:profit,cost',
+            'price' => 'required|numeric',
         ]);
 
-        Transaction::create($request->all());
-        return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
+        Transaction::create([
+            'amount' => $request->type === 'expense' ? -$request->amount : $request->amount,
+            'description' => $request->description,
+            'date' => $request->date,
+            'profit_or_cost' => $request->profit_or_cost,
+            'price' => $request->price,
+        ]);
+
+        return redirect()->route('transactions.index')->with('success', 'Transação criada com sucesso!');
     }
 
     public function edit(Transaction $transaction)
@@ -187,8 +197,8 @@ class TransactionController extends Controller
 
     public function financialProjections()
     {
-        $historicalRevenue = Transaction::where('amount', '>', 0)->sum('amount');
-        $historicalExpenses = Transaction::where('amount', '<', 0)->sum('amount');
+        $historicalRevenue = Transaction::where('profit_or_cost', 'profit')->sum('amount');
+        $historicalExpenses = Transaction::where('profit_or_cost', 'cost')->sum('amount');
         $historicalNetIncome = $historicalRevenue + $historicalExpenses;
 
         $growthRate = 0.05;
@@ -200,7 +210,7 @@ class TransactionController extends Controller
             $projectedNetIncome = $projectedRevenue + $projectedExpenses;
 
             $projections[] = [
-                'year' => Carbon::now()->year + $year,
+                'year' => now()->year + $year,
                 'revenue' => $projectedRevenue,
                 'expenses' => $projectedExpenses,
                 'net_income' => $projectedNetIncome,

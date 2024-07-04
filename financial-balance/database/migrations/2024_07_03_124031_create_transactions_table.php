@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->decimal('amount', 15, 2);
-            $table->date('transaction_date');
+            $table->date('date');
             $table->timestamps();
         });
     }
