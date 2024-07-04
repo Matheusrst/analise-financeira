@@ -153,14 +153,35 @@ class TransactionController extends Controller
         ));
     }
 
-    public function financialCompare()
+    public function comparativeAnalysis()
     {
-        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
-        $months = $transactions->pluck('month')->unique()->sort();
-        $years = $transactions->pluck('year')->unique()->sort();
-        $years = array_combine($years, $years);
-        $months = array_combine($months, $months);
-        $years = array_keys($years);
-        $months = array_keys($months);
+        $industryData = [
+            'liquidity_ratio' => 1.5,
+            'net_profitability' => 10.0, 
+            'debt_ratio' => 0.5,
+            'asset_turnover_ratio' => 1.2
+        ];
+
+        $totalAssets = Transaction::where('amount', '>', 0)->sum('amount');
+        $totalLiabilities = Transaction::where('amount', '<', 0)->sum('amount');
+        $totalRevenue = Transaction::where('amount', '>', 0)->sum('amount');
+        $totalExpenses = Transaction::where('amount', '<', 0)->sum('amount');
+        
+        $liquidityRatio = $totalLiabilities != 0 ? $totalAssets / abs($totalLiabilities) : null;
+
+        $netIncome = $totalRevenue + $totalExpenses;
+        $netProfitability = $totalRevenue != 0 ? ($netIncome / $totalRevenue) * 100 : null;
+
+        $debtRatio = $totalAssets != 0 ? abs($totalLiabilities) / $totalAssets : null;
+
+        $assetTurnoverRatio = $totalAssets != 0 ? $totalRevenue / $totalAssets : null;
+
+        return view('financial.comparative_analysis', compact(
+            'liquidityRatio', 
+            'netProfitability', 
+            'debtRatio', 
+            'assetTurnoverRatio',
+            'industryData'
+        ));
     }
 }
