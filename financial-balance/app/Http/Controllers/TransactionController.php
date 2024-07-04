@@ -184,4 +184,29 @@ class TransactionController extends Controller
             'industryData'
         ));
     }
+
+    public function financialProjections()
+    {
+        $historicalRevenue = Transaction::where('amount', '>', 0)->sum('amount');
+        $historicalExpenses = Transaction::where('amount', '<', 0)->sum('amount');
+        $historicalNetIncome = $historicalRevenue + $historicalExpenses;
+
+        $growthRate = 0.05;
+
+        $projections = [];
+        for ($year = 1; $year <= 5; $year++) {
+            $projectedRevenue = $historicalRevenue * pow(1 + $growthRate, $year);
+            $projectedExpenses = $historicalExpenses * pow(1 + $growthRate, $year);
+            $projectedNetIncome = $projectedRevenue + $projectedExpenses;
+
+            $projections[] = [
+                'year' => Carbon::now()->year + $year,
+                'revenue' => $projectedRevenue,
+                'expenses' => $projectedExpenses,
+                'net_income' => $projectedNetIncome,
+            ];
+        }
+
+        return view('financial.financial_projections', compact('projections'));
+    }
 }

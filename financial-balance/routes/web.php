@@ -26,4 +26,4 @@ Route::get('financial/horizontal-analysis', [TransactionController::class, 'hori
 Route::get('financial/vertical-analysis', [TransactionController::class, 'verticalAnalysis'])->name('financial.vertical_analysis');
 Route::get('financial/financial-ratios', [TransactionController::class, 'financialRatios'])->name('financial.financial_ratios');
 Route::get('financial/comparative-analysis', [TransactionController::class, 'comparativeAnalysis'])->name('financial.comparative_analysis');
-
+Route::get('financial/financial-projections', [TransactionController::class, 'financialProjections'])->name('financial.financial_projections');
