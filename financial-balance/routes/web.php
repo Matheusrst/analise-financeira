@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::resource('transactions', TransactionController::class)->only(['index', 'create', 'store']);
 
@@ -27,3 +30,6 @@ Route::get('financial/financial-ratios', [TransactionController::class, 'financi
 Route::get('financial/vertical-analysis', [TransactionController::class, 'verticalAnalysis'])->name('financial.vertical_analysis');
 Route::get('financial/comparative-analysis', [TransactionController::class, 'comparativeAnalysis'])->name('financial.comparative_analysis');
 Route::get('financial/financial-projections', [TransactionController::class, 'financialProjections'])->name('financial.financial_projections');
+
+Route::get('/transactions/feed', [TransactionController::class, 'feedForm'])->name('transactions.feedForm');
+Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->name('transactions.feed');

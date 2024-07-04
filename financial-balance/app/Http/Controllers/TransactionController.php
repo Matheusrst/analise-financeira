@@ -219,4 +219,33 @@ class TransactionController extends Controller
 
         return view('financial.financial_projections', compact('projections'));
     }
+
+    public function feedForm()
+    {
+        return view('Transaction\feed');
+    }
+
+    public function feedData(Request $request)
+    {
+        $request->validate([
+            'transactions' => 'required|array',
+            'transactions.*.amount' => 'required|numeric',
+            'transactions.*.description' => 'nullable|string|max:255',
+            'transactions.*.date' => 'required|date',
+            'transactions.*.profit_or_cost' => 'required|in:profit,cost',
+            'transactions.*.price' => 'required|numeric',
+        ]);
+
+        foreach ($request->transactions as $transactionData) {
+            Transaction::create([
+                'amount' => $transactionData['amount'],
+                'description' => $transactionData['description'],
+                'date' => $transactionData['date'],
+                'profit_or_cost' => $transactionData['profit_or_cost'],
+                'price' => $transactionData['price'],
+            ]);
+        }
+
+        return response()->json(['message' => 'Transações criadas com sucesso!'], 201);
+    }
 }
