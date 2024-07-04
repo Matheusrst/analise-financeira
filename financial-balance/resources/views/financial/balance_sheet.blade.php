@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Balanço Patrimonial</h1>
-    <table class="table">
+    <table border="1">
         <thead>
             <tr>
                 <th>Tipo</th>

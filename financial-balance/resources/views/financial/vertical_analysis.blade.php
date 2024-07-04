@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Análise Vertical</h1>
-    <table class="table">
+    <table border="1">
         <thead>
             <tr>
                 <th>Item</th>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Índices Financeiros</h1>
-    <table class="table">
+    <table border="1">
         <thead>
             <tr>
                 <th>Índice</th>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Projeções Financeiras</h1>
-    <table class="table">
+    <table border="1">
         <thead>
             <tr>
                 <th>Ano</th>
