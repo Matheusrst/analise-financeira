@@ -10,6 +10,8 @@
         <th>|</th>
         <a href="{{ route('transactions.feedForm') }}" class="list-group-item list-group-item-action">Adicionar Transações em Massa</a>
         <th>|</th>
+        <a href="{{ route('financial.balance_sheet') }}" class="list-group-item list-group-item-action">Balanço Patrimonial</a>
+        <th>|</th>
         <a href="{{ route('financial.horizontal_analysis') }}" class="list-group-item list-group-item-action">Análise Horizontal</a>
         <th>|</th>
         <a href="{{ route('financial.vertical_analysis') }}" class="list-group-item list-group-item-action">Análise Vertical</a>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asset;
+use App\Models\Equity;
+use App\Models\Liability;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use Carbon\Carbon;
@@ -67,11 +70,23 @@ class TransactionController extends Controller
     // Método para o Balanço Patrimonial
     public function balanceSheet()
     {
-        $assets = Transaction::where('amount', '>', 0)->sum('amount');
-        $liabilities = Transaction::where('amount', '<', 0)->sum('amount');
-        $equity = $assets + $liabilities;
+       $assets = Asset::all();
+       $totalAssets = $assets->sum('amount');
 
-        return view('financial.balance_sheet', compact('assets', 'liabilities', 'equity'));
+       $liabilities = Liability::all();
+       $totalLiabilities = $liabilities->sum('amount');
+
+       $equity = Equity::all();
+       $totalEquity = $equity->sum('amount');
+
+       return view('financial.balance_Sheet', [
+        'assets' => $assets,
+        'totalAssets' => $totalAssets,
+        'liabilities' => $liabilities,
+        'totalLiabilities' => $totalLiabilities,
+        'equity' => $equity,
+        'totalEquity' => $totalEquity,
+       ]);
     }
 
     // Método para a Demonstração do Fluxo de Caixa
