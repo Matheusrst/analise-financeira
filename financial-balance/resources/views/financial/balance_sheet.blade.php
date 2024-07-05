@@ -31,5 +31,6 @@
     <h2>Equação Contábil</h2>
     <p>Total de Ativos = Total de Passivos + Total de Patrimônio Líquido</p>
     <p>R$ {{ number_format($totalAssets, 2, ',', '.') }} = R$ {{ number_format($totalLiabilities, 2, ',', '.') }} + R$ {{ number_format($totalEquity, 2, ',', '.') }}</p>
+    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
 </div>
 @endsection

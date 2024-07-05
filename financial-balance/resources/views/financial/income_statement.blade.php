@@ -26,5 +26,6 @@
             </tr>
         </tbody>
     </table>
+    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
 </div>
 @endsection

@@ -43,6 +43,7 @@
             <input type="date" class="form-control" id="date" name="date" required>
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
+        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
     </form>
 </div>
 @endsection
