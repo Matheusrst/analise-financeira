@@ -11,7 +11,6 @@
                 <th>Descrição</th>
                 <th>Montante</th>
                 <th>Tipo</th>
-                <th>valor</th>
                 <th>Data</th>
             </tr>
         </thead>
@@ -22,7 +21,6 @@
                 <td>{{ $transaction->description }}</td>
                 <td>{{ number_format($transaction->amount, 2) }}</td>
                 <td>{{ ucfirst($transaction->profit_or_cost) }}</td>
-                <td>{{ number_format($transaction->price, 2) }}</td>
                 <td>{{ $transaction->date }}</td>
             </tr>
             @endforeach
