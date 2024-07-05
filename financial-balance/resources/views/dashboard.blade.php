@@ -19,6 +19,8 @@
         <a href="{{ route('financial.comparative_analysis') }}" class="list-group-item list-group-item-action">Análise Comparativa</a>
         <th>|</th>
         <a href="{{ route('financial.financial_projections') }}" class="list-group-item list-group-item-action">Projeção Financeira</a>
+        <th>|</th>
+        <a href="{{ route('financial.calculateROI') }}" class="list-group-item list-group-item-action">Calcular ROI</a>
     </div>
 </div>
 @endsection

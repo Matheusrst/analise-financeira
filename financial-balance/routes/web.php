@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,3 +32,5 @@ Route::get('financial/financial-projections', [TransactionController::class, 'fi
 
 Route::get('/transactions/feed', [TransactionController::class, 'feedForm'])->name('transactions.feedForm');
 Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->name('transactions.feed');
+
+Route::get('finacial/roi', [TransactionController::class, 'calculateROI'])->name('financial.calculateROI');

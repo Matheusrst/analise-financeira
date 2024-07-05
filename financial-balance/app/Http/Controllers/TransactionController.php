@@ -248,4 +248,22 @@ class TransactionController extends Controller
 
         return response()->json(['message' => 'Transações criadas com sucesso!'], 201);
     }
+
+    public function calculateROI()
+    {
+        $transactions = Transaction::all();
+
+        $totalProfit = $transactions->where('profit_or_cost', 'profit')->sum('amount');
+
+        $totalInvested = $transactions->where('profit_or_cost', 'cost')->sum('amount');
+        
+
+        if ($totalInvested == 0) {
+            return response()->json(['error' => 'não é possivel calcular o ROI com investimento em zero'], 400);
+        }
+
+        $roi = ($totalProfit / $totalInvested) * 100;
+
+        return response()->json(['ROI' => $roi], 200);
+    }
 }
