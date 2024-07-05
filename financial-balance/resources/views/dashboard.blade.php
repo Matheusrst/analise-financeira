@@ -27,6 +27,10 @@
         <a href="{{ route('financial.calculateROE') }}" class="list-group-item list-group-item-action">Calcular ROE</a>
         <th>|</th>
         <a href="{{ route('financial.calculateFreeCashFlow') }}" class="list-group-item list-group-item-action">Calcular Fluxo de Caixa Livre</a>
+        <th>|</th>
+        <a href="{{ route('financial.createAsset') }}" class="list-group-item list-group-item-action">Adicionar Ativo</a>
+        <th>|</th>
+        <a href="{{ route('financial.createLiability') }}" class="list-group-item list-group-item-action">Adicionar Passivo</a>
     </div>
 </div>
 @endsection

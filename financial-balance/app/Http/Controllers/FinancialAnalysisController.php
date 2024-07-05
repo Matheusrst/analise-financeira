@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Equity;
+use App\Models\Liability;
 
 class FinancialAnalysisController extends Controller
 {
@@ -55,5 +56,40 @@ class FinancialAnalysisController extends Controller
         $freecashFlow = $totalOperationalIncome - $totalOperationalExpense - $totalCapex;
 
         return response()->json(['FreeCashFlow' => $freecashFlow], 200);
+    }
+
+    public function createAsset()
+    {
+        return view('financial.create_asset');
+    }
+
+    public function storeAsset(Request $request)
+    {
+        $request->validate([
+            'description' =>'required|string|max:255',
+            'amount' => 'required|numeric',
+        ]);
+
+        return redirect()->route('financial.balanceSheet')->with('sucess', 'Atiovo adicionado com sucesso');
+    }
+
+    public function createLiability()
+    {
+        return view('financial.create_liability');
+    }
+
+    public function storeLiability(Request $request)
+    {
+        $request->validate([
+            'description' =>'required|string|max:255',
+            'amount' => 'required|numeric',
+        ]);
+
+        Liability::create([
+            'description' => $request->description,
+            'amount' => $request->amount,
+        ]);
+
+        return redirect()->route('financial.balanceSheet')->with('sucess', 'passivo adicionado com sucesso');
     }
 }

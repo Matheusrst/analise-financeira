@@ -37,3 +37,9 @@ Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->n
 Route::get('financial/roi', [FinancialAnalysisController::class, 'calculateROI'])->name('financial.calculateROI');
 Route::get('financial/roe', [FinancialAnalysisController::class, 'calculateROE'])->name('financial.calculateROE');
 Route::get('financial/free-cash-flow', [FinancialAnalysisController::class, 'calculateCashFlow'])->name('financial.calculateFreeCashFlow');
+
+Route::get('financial/assets/create', [FinancialAnalysisController::class, 'createAsset'])->name('financial.createAsset');
+Route::post('financial/assets/create', [FinancialAnalysisController::class, 'storeAsset'])->name('financial.storeAsset');
+
+Route::get('financial/liabilities/create', [FinancialAnalysisController::class, 'createLiability'])->name('financial.createLiability');
+Route::post('financial/liabilities/create', [FinancialAnalysisController::class, 'storeLiability'])->name('financial.storeLiability');
