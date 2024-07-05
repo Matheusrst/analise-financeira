@@ -7,7 +7,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Transações</h5>
+                    <h3 class="card-title">Transações</h3>
                     <p class="card-text">Gerencie suas transações financeiras</p>
                     <a href="{{ route('transactions.index') }}" class="btn btn-primary btn-block mb-2">Listar Transações</a>
                     <th>|</th>
@@ -20,7 +20,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Análises e Relatórios</h5>
+                    <h3 class="card-title">Análises e Relatórios</h3>
                     <p class="card-text">Visualize e analise seu desempenho financeiro</p>
                     <a href="{{ route('financial.balance_sheet') }}" class="btn btn-info btn-block mb-2">Balanço Patrimonial</a>
                     <th>|</th>
@@ -37,7 +37,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Ferramentas de Planejamento</h5>
+                    <h3 class="card-title">Ferramentas de Planejamento</h3>
                     <p class="card-text">Planeje e projete seu futuro financeiro</p>
                     <a href="{{ route('financial.financial_projections') }}" class="btn btn-secondary btn-block mb-2">Projeção Financeira</a>
                     <th>|</th>
@@ -52,7 +52,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Ativos, Passivos e Patrimônio</h5>
+                    <h3 class="card-title">Ativos, Passivos e Patrimônio</h3>
                     <p class="card-text">Gerencie seus ativos, passivos e patrimônio líquido</p>
                     <a href="{{ route('financial.createAsset') }}" class="btn btn-dark btn-block mb-2">Adicionar Ativo</a>
                     <th>|</th>
@@ -65,7 +65,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Demonstrações Financeiras</h5>
+                    <h3 class="card-title">Demonstrações Financeiras</h3>
                     <p class="card-text">Veja suas demonstrações financeiras detalhadas</p>
                     <a href="{{ route('financial.incomeStatement') }}" class="btn btn-primary btn-block">Demonstração de Resultados</a>
                 </div>
