@@ -25,4 +25,20 @@ class FinancialAnalysisController extends Controller
 
         return response()->json(['ROI' => $roi], 200);
     }
+
+    public function calculateROE()
+    {
+        $equity = Equity::latest()->first();
+
+        if (!$equity || $equity->amount == 0){
+            return response()->json(['error' => 'não é possivel calcular o ROE sem patrimonio liquido valido'], 400);
+        }
+
+        $transactions = Transaction::all();
+        $netProfit = $transactions->where('profit_or_cost', 'profit')->sum('amount') - $transactions->where('profit_or_cost', 'cost')->sum('amount');
+
+        $roe = ($netProfit / $equity->amount) * 100;
+
+        return response()->json(['ROE' => $roe], 200);
+    }
 }

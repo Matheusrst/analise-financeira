@@ -21,6 +21,8 @@
         <a href="{{ route('financial.financial_projections') }}" class="list-group-item list-group-item-action">Projeção Financeira</a>
         <th>|</th>
         <a href="{{ route('financial.calculateROI') }}" class="list-group-item list-group-item-action">Calcular ROI</a>
+        <th>|</th>
+        <a href="{{ route('financial.calculateROE') }}" class="list-group-item list-group-item-action">Calcular ROE</a>
     </div>
 </div>
 @endsection

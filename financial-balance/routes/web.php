@@ -34,4 +34,5 @@ Route::get('financial/financial-projections', [TransactionController::class, 'fi
 Route::get('/transactions/feed', [TransactionController::class, 'feedForm'])->name('transactions.feedForm');
 Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->name('transactions.feed');
 
-Route::get('finacial/roi', [FinancialAnalysisController::class, 'calculateROI'])->name('financial.calculateROI');
+Route::get('financial/roi', [FinancialAnalysisController::class, 'calculateROI'])->name('financial.calculateROI');
+Route::get('financial/roe', [FinancialAnalysisController::class, 'calculateROE'])->name('financial.calculateROE');
