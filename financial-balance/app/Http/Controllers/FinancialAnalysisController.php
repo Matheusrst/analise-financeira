@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Equity;
 use App\Models\Liability;
+use App\Models\Asset;
 
 class FinancialAnalysisController extends Controller
 {
@@ -66,12 +67,18 @@ class FinancialAnalysisController extends Controller
     public function storeAsset(Request $request)
     {
         $request->validate([
-            'description' =>'required|string|max:255',
+            'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
         ]);
 
-        return redirect()->route('financial.balanceSheet')->with('sucess', 'Atiovo adicionado com sucesso');
+        Asset::create([
+            'description' => $request->description,
+            'amount' => $request->amount,
+        ]);
+
+        return redirect()->route('financial.balance_sheet')->with('success', 'Ativo adicionado com sucesso.');
     }
+
 
     public function createLiability()
     {
