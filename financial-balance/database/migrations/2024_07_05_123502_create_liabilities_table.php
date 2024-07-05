@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('liabilities', function (Blueprint $table) {
             $table->id();
-            $table->string('desciption');
+            $table->string('description');
             $table->decimal('amount', 15, 2);
             $table->timestamps();
         });

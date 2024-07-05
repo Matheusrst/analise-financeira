@@ -97,6 +97,26 @@ class FinancialAnalysisController extends Controller
             'amount' => $request->amount,
         ]);
 
-        return redirect()->route('financial.balanceSheet')->with('sucess', 'passivo adicionado com sucesso');
+        return redirect()->route('financial.balance_sheet')->with('sucess', 'passivo adicionado com sucesso');
+    }
+
+    public function createEquity()
+    {
+        return view('financial.create_equity');
+    }
+
+    public function storeEquity(Request $request)
+    {
+        $request->validate([
+            'description' => 'required|string|max:255',
+            'amount' => 'required|numeric',
+        ]);
+
+        Equity::create([
+            'description' => $request->description,
+            'amount' => $request->amount,
+        ]);
+
+        return  redirect()->route('financial.balance_sheet')->with('success', 'patrimonio liquido adicionado com sucesso');
     }
 }

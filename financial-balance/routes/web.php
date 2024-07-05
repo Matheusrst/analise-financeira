@@ -43,3 +43,6 @@ Route::post('financial/assets/create', [FinancialAnalysisController::class, 'sto
 
 Route::get('financial/liabilities/create', [FinancialAnalysisController::class, 'createLiability'])->name('financial.createLiability');
 Route::post('financial/liabilities/create', [FinancialAnalysisController::class, 'storeLiability'])->name('financial.storeLiability');
+
+Route::get('financial/equity/create', [FinancialAnalysisController::class, 'createEquity'])->name('financial.createEquity');
+Route::post('financial/equity/create', [FinancialAnalysisController::class, 'storeEquity'])->name('financial.storeEquity');
