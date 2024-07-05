@@ -25,23 +25,17 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'description' => 'required|string|max:255',
             'amount' => 'required|numeric',
-            'type' => 'required|in:revenue,expense', 
-            'description' => 'nullable|string|max:255',
+            'type' => 'required|string|in:revenue,expense',
             'date' => 'required|date',
-            'profit_or_cost' => 'required|in:profit,cost',
-            'price' => 'required|numeric',
+            'profit_or_cost' => 'required|string|in:profit,cost',
+            'price' => 'required|numeric'
         ]);
 
-        Transaction::create([
-            'amount' => $request->type === 'expense' ? -$request->amount : $request->amount,
-            'description' => $request->description,
-            'date' => $request->date,
-            'profit_or_cost' => $request->profit_or_cost,
-            'price' => $request->price,
-        ]);
+        Transaction::create($request->all());
 
-        return redirect()->route('transactions.index')->with('success', 'Transação criada com sucesso!');
+        return redirect()->route('transactions.index')->with('success', 'Transação adicionada com sucesso.');
     }
 
     public function edit(Transaction $transaction)

@@ -123,11 +123,11 @@ class FinancialAnalysisController extends Controller
     public function incomeStatement()
     {
         $revenues = Transaction::where('type', 'revenue')->sum('amount');
-
+        
         $expenses = Transaction::where('type', 'expense')->sum('amount');
-
+        
         $netIncome = $revenues - $expenses;
-
+        
         return view('financial.income_statement', compact('revenues', 'expenses', 'netIncome'));
     }
 }

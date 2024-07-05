@@ -12,7 +12,7 @@
                     <input type="text" name="transactions[0][description]" class="form-control" maxlength="255">
                 </div>
                 <div class="form-group">
-                    <label for="transactions[0][amount]">Montante</label>
+                    <label for="transactions[0][amount]">Valor</label>
                     <input type="number" name="transactions[0][amount]" class="form-control" required>
                 </div>
                 <div class="form-group">
@@ -21,10 +21,6 @@
                         <option value="profit">Lucro</option>
                         <option value="cost">Custo</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="transactions[0][price]">Preço</label>
-                    <input type="number" step="0.01" name="transactions[0][price]" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="transactions[0][date]">Data</label>

@@ -12,9 +12,9 @@ class Transaction extends Model
     protected $fillable = [
         'description',
         'amount',
+        'type',
         'date',
         'profit_or_cost',
         'price',
-        'type',
     ];
 }
