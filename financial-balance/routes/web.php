@@ -36,3 +36,4 @@ Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->n
 
 Route::get('financial/roi', [FinancialAnalysisController::class, 'calculateROI'])->name('financial.calculateROI');
 Route::get('financial/roe', [FinancialAnalysisController::class, 'calculateROE'])->name('financial.calculateROE');
+Route::get('financial/free-cash-flow', [FinancialAnalysisController::class, 'calculateCashFlow'])->name('financial.calculateFreeCashFlow');

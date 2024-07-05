@@ -23,6 +23,8 @@
         <a href="{{ route('financial.calculateROI') }}" class="list-group-item list-group-item-action">Calcular ROI</a>
         <th>|</th>
         <a href="{{ route('financial.calculateROE') }}" class="list-group-item list-group-item-action">Calcular ROE</a>
+        <th>|</th>
+        <a href="{{ route('financial.calculateFreeCashFlow') }}" class="list-group-item list-group-item-action">Calcular Fluxo de Caixa Livre</a>
     </div>
 </div>
 @endsection

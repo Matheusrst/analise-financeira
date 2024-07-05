@@ -41,4 +41,19 @@ class FinancialAnalysisController extends Controller
 
         return response()->json(['ROE' => $roe], 200);
     }
+
+    public function calculateCashFlow()
+    {
+        $transactions = Transaction::all();
+
+        $totalOperationalIncome = $transactions->where('profit_or_cost', 'profit')->sum('amount');
+
+        $totalOperationalExpense = $transactions->where('profit_or_cost', 'cost')->sum('amount');
+
+        $totalCapex = $transactions->where('description', 'capex')->sum('amount');
+
+        $freecashFlow = $totalOperationalIncome - $totalOperationalExpense - $totalCapex;
+
+        return response()->json(['FreeCashFlow' => $freecashFlow], 200);
+    }
 }
