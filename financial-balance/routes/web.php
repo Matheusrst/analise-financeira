@@ -46,3 +46,5 @@ Route::post('financial/liabilities/create', [FinancialAnalysisController::class,
 
 Route::get('financial/equity/create', [FinancialAnalysisController::class, 'createEquity'])->name('financial.createEquity');
 Route::post('financial/equity/create', [FinancialAnalysisController::class, 'storeEquity'])->name('financial.storeEquity');
+
+Route::get('financial/income-statement', [FinancialAnalysisController::class, 'incomeStatement'])->name('financial.incomeStatement');

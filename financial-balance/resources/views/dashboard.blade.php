@@ -33,6 +33,8 @@
         <a href="{{ route('financial.createLiability') }}" class="list-group-item list-group-item-action">Adicionar Passivo</a>
         <th>|</th>
         <a href="{{ route('financial.createEquity') }}" class="list-group-item list-group-item-action">Adicionar Patrimônio Líquido</a>
+        <th>|</th>
+        <a href="{{ route('financial.incomeStatement') }}" class="list-group-item list-group-item-action">Demonstração de Resultados</a>
     </div>
 </div>
 @endsection
