@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Models\Transaction;
+use App\http\Controllers\FinancialAnalysisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,4 @@ Route::get('financial/financial-projections', [TransactionController::class, 'fi
 Route::get('/transactions/feed', [TransactionController::class, 'feedForm'])->name('transactions.feedForm');
 Route::post('/transactions/feed', [TransactionController::class, 'feedData'])->name('transactions.feed');
 
-Route::get('finacial/roi', [TransactionController::class, 'calculateROI'])->name('financial.calculateROI');
+Route::get('finacial/roi', [FinancialAnalysisController::class, 'calculateROI'])->name('financial.calculateROI');
