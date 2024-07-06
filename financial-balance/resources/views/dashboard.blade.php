@@ -46,6 +46,8 @@
                     <a href="{{ route('financial.calculateROE') }}" class="btn btn-secondary btn-block mb-2">Calcular ROE</a>
                     <th>|</th>
                     <a href="{{ route('financial.calculateFreeCashFlow') }}" class="btn btn-secondary btn-block">Calcular Fluxo de Caixa Livre</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.selling_price') }}" class="btn btn-secondary btn-block">Definir preço de venda</a>
                 </div>
             </div>
         </div>

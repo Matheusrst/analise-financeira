@@ -146,4 +146,18 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.operational_costs', compact('operationalCosts'));
     }
+
+    public function calculateSellingPrice(Request $request)
+    {
+        $request->validate([
+            'cost' => 'required|numeric',
+            'desired_margin' => 'required|numeric|between:0,100',
+        ]);
+
+        $cost = $request->input('cost');
+        $desiredMargin = $request->input('desired_margin');
+        $sellingPrice = $cost / (1 - $desiredMargin / 100);
+
+        return view('financial.selling_price', compact('cost', 'desiredMargin', 'sellingPrice'));
+    }
 }

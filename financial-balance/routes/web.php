@@ -52,3 +52,9 @@ Route::get('financial/income-statement', [FinancialAnalysisController::class, 'i
 Route::get('financial/fixed_and_variable_costs', [FinancialAnalysisController::class, 'fixedAndVariableCosts'])->name('financial.fixed_and_variable_costs');
 
 Route::get('financial/operational_costs', [FinancialAnalysisController::class, 'operationalCosts'])->name('financial.operatoinal_costs');
+
+Route::get('financial/selling_price', function() {
+    return view('financial.selling_price');
+})->name('financial.selling_price');
+
+Route::post('financial/calculateSellingPrice', [FinancialAnalysisController::class, 'calculateSellingPrice'])->name('financial.calculateSellingPrice');
