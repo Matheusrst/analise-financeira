@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\Equity;
 use App\Models\Liability;
 use App\Models\Asset;
+use Carbon\Carbon;
 
 class FinancialAnalysisController extends Controller
 {
@@ -159,5 +160,37 @@ class FinancialAnalysisController extends Controller
         $sellingPrice = $cost / (1 - $desiredMargin / 100);
 
         return view('financial.selling_price', compact('cost', 'desiredMargin', 'sellingPrice'));
+    }
+
+    public function calculateRevenue()
+    {
+        $now = Carbon::now();
+
+        $monthlyRevenue = Transaction::where('type', 'revenue')
+            ->whereYear('date', $now->year)
+            ->whereMonth('date', $now->month)
+            ->sum('amount');
+
+        $quarterlyRevenue = Transaction::where('type', 'revenue')
+            ->whereYear('date', $now->year)
+            ->whereIn('date', [
+                $now->copy()->startOfQuarter()->toDateString(),
+                $now->copy()->endOfQuarter()->toDateString(),
+            ])
+            ->sum('amount');
+
+        $semiAnnualRevenue = Transaction::where('type', 'revenue')
+            ->whereYear('date', $now->year)
+            ->where(function ($query) use ($now) {
+                $query->whereBetween('date', [$now->copy()->startOfYear()->toDateString(), $now->copy()->addMonths(6)->toDateString()])
+                    ->orWhereBetween('date', [$now->copy()->addMonths(6)->toDateString(), $now->copy()->endOfYear()->toDateString()]);
+            })
+            ->sum('amount');
+
+        $annualRevenue = Transaction::where('type', 'revenue')
+            ->whereYear('date', $now->year)
+            ->sum('amount');
+
+        return view('financial.revenue', compact('monthlyRevenue', 'quarterlyRevenue', 'semiAnnualRevenue', 'annualRevenue'));
     }
 }
