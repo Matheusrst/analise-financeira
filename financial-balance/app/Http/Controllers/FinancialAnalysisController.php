@@ -139,4 +139,11 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.fixed_and_variable_costs', compact('fixedCosts', 'variableCosts'));
     }
+
+    public function operationalCosts()
+    {
+        $operationalCosts = Transaction::where('type', 'expense')->where('cost_type', 'operational')->sum('amount');
+
+        return view('financial.operational_costs', compact('operationalCosts'));
+    }
 }

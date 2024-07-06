@@ -49,5 +49,6 @@ Route::post('financial/equity/create', [FinancialAnalysisController::class, 'sto
 
 Route::get('financial/income-statement', [FinancialAnalysisController::class, 'incomeStatement'])->name('financial.incomeStatement');
 
-
 Route::get('financial/fixed_and_variable_costs', [FinancialAnalysisController::class, 'fixedAndVariableCosts'])->name('financial.fixed_and_variable_costs');
+
+Route::get('financial/operational_costs', [FinancialAnalysisController::class, 'operationalCosts'])->name('financial.operatoinal_costs');

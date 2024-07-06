@@ -61,6 +61,8 @@
                     <a href="{{ route('financial.createEquity') }}" class="btn btn-dark btn-block">Adicionar Patrimônio Líquido</a>
                     <th>|</th>
                     <a href="{{ route('financial.fixed_and_variable_costs') }}" class="btn btn-warning btn-block">custos fixos e variaveis</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.operatoinal_costs') }}" class="btn btn-warning btn-block">custos operacionais</a>
                 </div>
             </div>
         </div>

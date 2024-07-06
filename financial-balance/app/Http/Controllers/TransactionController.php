@@ -31,7 +31,7 @@ class TransactionController extends Controller
             'date' => 'required|date',
             'profit_or_cost' => 'required|string|in:profit,cost',
             'price' => 'nullable|numeric',
-            'cost_type' => 'nullable|string|in:fixed,variable'
+            'cost_type' => 'nullable|string|in:fixed,variable,operational'
         ]);
 
         Transaction::create($request->all());

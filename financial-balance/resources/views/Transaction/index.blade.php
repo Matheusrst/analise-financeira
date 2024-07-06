@@ -11,7 +11,7 @@
                 <th>Descrição</th>
                 <th>Montante</th>
                 <th>Tipo</th>
-                <th>fixo/variavel</th>
+                <th>tipo de custo</th>
                 <th>Data</th>
             </tr>
         </thead>

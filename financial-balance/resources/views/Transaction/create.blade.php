@@ -44,6 +44,7 @@
                 <option value="">Selecione</option>
                 <option value="fixed">Fixo</option>
                 <option value="variable">Variável</option>
+                <option value="operational">Operacional</option>
             </select>
         </div>
         <div class="form-group">
