@@ -232,30 +232,25 @@ class TransactionController extends Controller
 
     public function feedForm()
     {
-        return view('Transaction\feed');
+        return view('transaction.feed');
     }
 
-    public function feedData(Request $request)
+    public function feed(Request $request)
     {
         $request->validate([
             'transactions' => 'required|array',
+            'transactions.*.description' => 'required|string|max:255',
             'transactions.*.amount' => 'required|numeric',
-            'transactions.*.description' => 'nullable|string|max:255',
+            'transactions.*.type' => 'required|string|in:revenue,expense',
             'transactions.*.date' => 'required|date',
-            'transactions.*.profit_or_cost' => 'required|in:profit,cost',
-            'transactions.*.price' => 'required|numeric',
+            'transactions.*.profit_or_cost' => 'required|string|in:profit,cost',
+            'transactions.*.cost_type' => 'nullable|string|in:fixed,variable,operational'
         ]);
 
         foreach ($request->transactions as $transactionData) {
-            Transaction::create([
-                'amount' => $transactionData['amount'],
-                'description' => $transactionData['description'],
-                'date' => $transactionData['date'],
-                'profit_or_cost' => $transactionData['profit_or_cost'],
-                'price' => $transactionData['price'],
-            ]);
+            Transaction::create($transactionData);
         }
 
-        return response()->json(['message' => 'Transações criadas com sucesso!'], 201);
+        return redirect()->route('transaction.index')->with('success', 'Transações adicionadas com sucesso.');
     }
 }
