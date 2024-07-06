@@ -48,3 +48,6 @@ Route::get('financial/equity/create', [FinancialAnalysisController::class, 'crea
 Route::post('financial/equity/create', [FinancialAnalysisController::class, 'storeEquity'])->name('financial.storeEquity');
 
 Route::get('financial/income-statement', [FinancialAnalysisController::class, 'incomeStatement'])->name('financial.incomeStatement');
+
+
+Route::get('financial/fixed_and_variable_costs', [FinancialAnalysisController::class, 'fixedAndVariableCosts'])->name('financial.fixed_and_variable_costs');

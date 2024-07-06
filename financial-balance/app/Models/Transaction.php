@@ -16,5 +16,6 @@ class Transaction extends Model
         'date',
         'profit_or_cost',
         'price',
+        'cost_type',
     ];
 }

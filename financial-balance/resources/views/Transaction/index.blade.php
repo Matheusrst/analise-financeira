@@ -11,6 +11,7 @@
                 <th>Descrição</th>
                 <th>Montante</th>
                 <th>Tipo</th>
+                <th>fixo/variavel</th>
                 <th>Data</th>
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                 <td>{{ $transaction->description }}</td>
                 <td>{{ number_format($transaction->amount, 2) }}</td>
                 <td>{{ ucfirst($transaction->profit_or_cost) }}</td>
+                <td>{{ ucfirst($transaction->cost_type) }}</td>
                 <td>{{ $transaction->date }}</td>
             </tr>
             @endforeach

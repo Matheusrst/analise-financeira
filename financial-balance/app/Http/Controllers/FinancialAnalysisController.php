@@ -130,4 +130,13 @@ class FinancialAnalysisController extends Controller
         
         return view('financial.income_statement', compact('revenues', 'expenses', 'netIncome'));
     }
+
+    public function fixedAndVariableCosts()
+    {
+        $fixedCosts = Transaction::where('type', 'expense')->where('cost_type', 'fixed')->sum('amount');
+
+        $variableCosts = Transaction::where('type', 'expense')->where('cost_type', 'variable')->sum('amount');
+
+        return view('financial.fixed_and_variable_costs', compact('fixedCosts', 'variableCosts'));
+    }
 }

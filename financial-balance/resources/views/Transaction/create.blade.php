@@ -39,6 +39,14 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="cost_type">Tipo de Custo</label>
+            <select class="form-control" id="cost_type" name="cost_type">
+                <option value="">Selecione</option>
+                <option value="fixed">Fixo</option>
+                <option value="variable">Variável</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="date">Data</label>
             <input type="date" class="form-control" id="date" name="date" required>
         </div>
