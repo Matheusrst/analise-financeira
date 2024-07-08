@@ -53,6 +53,8 @@
                     <th>|</th>
                     <a href="{{ route('financial.current_ratio') }}" class="list-group-item list-group-item-action">Razão Corrente</a>
                     <th>|</th>
+                    <a href="{{ route('financial.quick_ratio') }}" class="list-group-item list-group-item-action">Razão Rápida</a>
+                    <th>|</th>
                     <a href="{{ route('financial.selling_price') }}" class="btn btn-secondary btn-block">Definir preço de venda</a>
                 </div>
             </div>

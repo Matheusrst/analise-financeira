@@ -231,4 +231,23 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.current_ratio', compact('currentAssets', 'currentLiabilities', 'currentRatio'));
     }
+
+    public function calculateQuickRatio()
+    {
+        // Obtém os valores dos ativos circulantes excluindo estoques
+        $quickAssets = Transaction::where('type', 'asset')
+                                  ->where('description', 'current')
+                                  ->where('cost_type', '!=', 'Inventory')
+                                  ->sum('amount');
+        $currentLiabilities = Transaction::where('type', 'liability')->where('description', 'current')->sum('amount');
+
+        // Calcula a razão rápida
+        if ($currentLiabilities == 0) {
+            $quickRatio = 'Infinito (passivos circulantes são zero)';
+        } else {
+            $quickRatio = $quickAssets / $currentLiabilities;
+        }
+
+        return view('financial.quick_ratio', compact('quickAssets', 'currentLiabilities', 'quickRatio'));
+    }
 }
