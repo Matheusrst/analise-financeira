@@ -74,7 +74,7 @@ Route::get('financial/income-statement', [FinancialAnalysisController::class, 'i
 Route::get('financial/fixed_and_variable_costs', [FinancialAnalysisController::class, 'fixedAndVariableCosts'])->name('financial.fixed_and_variable_costs');
 
 // Rota para exibir os custos operacionais da empresa
-Route::get('financial/operational_costs', [FinancialAnalysisController::class, 'operationalCosts'])->name('financial.operational_costs');
+Route::get('financial/operational_costs', [FinancialAnalysisController::class, 'operationalCosts'])->name('financial.operatoinal_costs');
 
 // Rota para exibir o formulário de cálculo do preço de venda ideal
 Route::get('financial/selling_price', function() {
