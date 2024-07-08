@@ -76,6 +76,8 @@
                     <h3 class="card-title">Demonstrações Financeiras</h3>
                     <p class="card-text">Veja suas demonstrações financeiras detalhadas</p>
                     <a href="{{ route('financial.incomeStatement') }}" class="btn btn-primary btn-block">Demonstração de Resultados</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.transaction_history') }}" class="list-group-item list-group-item-action">Histórico de Transações</a>
                 </div>
             </div>
         </div>

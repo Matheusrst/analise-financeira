@@ -193,4 +193,16 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.revenue', compact('monthlyRevenue', 'quarterlyRevenue', 'semiAnnualRevenue', 'annualRevenue'));
     }
+
+    public function transactionHistory()
+    {
+        $transactions = Transaction::orderBy('date', 'asc')->get();
+
+        $monthlyTransactions = Transaction::selectRaw('YEAR(date) as year, MONTH(date) as month, SUM(amount) as total_amount')
+            ->groupBy('year', 'month')
+            ->orderByRaw('year asc, month asc')
+            ->get();
+
+        return view('financial.transaction_history', compact('transactions', 'monthlyTransactions'));
+    }
 }

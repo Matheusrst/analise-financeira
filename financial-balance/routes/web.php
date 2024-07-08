@@ -60,3 +60,5 @@ Route::get('financial/selling_price', function() {
 Route::post('financial/calculateSellingPrice', [FinancialAnalysisController::class, 'calculateSellingPrice'])->name('financial.calculateSellingPrice');
 
 Route::get('financial/revenue', [FinancialAnalysisController::class, 'calculateRevenue'])->name('financial.revenue');
+
+Route::get('financial/transaction_history', [FinancialAnalysisController::class, 'transactionHistory'])->name('financial.transaction_history');
