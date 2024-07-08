@@ -113,3 +113,6 @@ Route::get('financial/average-collection-period', [FinancialAnalysisController::
 
 //rotas para calcular prazo medio de pagamento
 Route::get('financial/average-payment-period', [FinancialAnalysisController::class, 'averagePaymentPeriod'])->name('financial.average_payment_period');
+
+//rotas para calcular tempo de retorno do investimento
+Route::get('financial/payback-period', [FinancialAnalysisController::class, 'paybackPeriod'])->name('financial.payback_period');

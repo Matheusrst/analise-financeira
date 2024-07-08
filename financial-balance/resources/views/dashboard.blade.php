@@ -69,6 +69,8 @@
                         <a href="{{ route('financial.average_collection_period') }}" class="list-group-item list-group-item-action btn-secondary">prazo medio de recebimento</a>
                         <th>|</th>
                         <a href="{{ route('financial.average_payment_period') }}" class="list-group-item list-group-item-action btn-secondary">prazo medio de pagamento</a>
+                        <th>|</th>
+                        <a href="{{ route('financial.payback_period') }}" class="list-group-item list-group-item-action btn-secondary">retorno do investimento inicial</a>
                     </div>
                 </div>
             </div>

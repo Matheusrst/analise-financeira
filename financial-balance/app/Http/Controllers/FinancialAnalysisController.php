@@ -330,4 +330,33 @@ class FinancialAnalysisController extends Controller
     
         return view('financial.average_payment_period', compact('averagePaymentPeriod'));
     }
+
+    public function paybackPeriod()
+    {
+        $transactions = Transaction::orderBy('date', 'asc')->get();
+    
+        $cumulativeCashFlow = 0;
+        $initialInvestment = 0;
+        $paybackPeriodMonths = 0;
+    
+        foreach ($transactions as $transaction) {
+            if ($transaction->type == 'expense') {
+                $cumulativeCashFlow -= $transaction->amount;
+            } else {
+                $cumulativeCashFlow += $transaction->amount;
+            }
+    
+            $paybackPeriodMonths++;
+    
+            if ($cumulativeCashFlow >= $initialInvestment) {
+                break;
+            }
+        }
+
+        if ($cumulativeCashFlow < $initialInvestment) {
+            $paybackPeriodMonths = -1; 
+        }
+    
+        return view('financial.payback_period', compact('paybackPeriodMonths', 'initialInvestment'));
+    }
 }
