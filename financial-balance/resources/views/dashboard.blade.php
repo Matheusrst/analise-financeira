@@ -37,6 +37,8 @@
                     <a href="{{ route('financial.debt_ratio') }}" class="list-group-item list-group-item-action">Índice de Endividamento</a>
                     <th>|</th>
                     <a href="{{ route('financial.consumer_demand') }}" class="list-group-item list-group-item-action">Demanda de Consumidores</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.interest_coverage') }}" class="list-group-item list-group-item-action">Cobertura de Juros</a>
                 </div>
             </div>
         </div>

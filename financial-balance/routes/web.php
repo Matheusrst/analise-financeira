@@ -68,3 +68,4 @@ Route::get('financial/consumer_demand', [FinancialAnalysisController::class, 'co
 Route::get('financial/current_ratio', [FinancialAnalysisController::class, 'calculateCurrentRatio'])->name('financial.current_ratio');
 Route::get('financial/quick_ratio', [FinancialAnalysisController::class, 'calculateQuickRatio'])->name('financial.quick_ratio');
 Route::get('financial/debt_ratio', [FinancialAnalysisController::class, 'calculateDebtRatio'])->name('financial.debt_ratio');
+Route::get('financial/interest_coverage', [FinancialAnalysisController::class, 'calculateInterestCoverage'])->name('financial.interest_coverage');

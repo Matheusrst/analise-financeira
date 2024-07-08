@@ -262,4 +262,18 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.debt_ratio', compact('totalLiabilities', 'totalEquity', 'debtRatio'));
     }
+
+    public function calculateInterestCoverage()
+    {
+        $ebit = Transaction::where('type', 'revenue')->sum('amount') - Transaction::where('type', 'expense')->where('description', '!=', 'interest')->sum('amount');
+        $interestExpense = Transaction::where('type', 'expense')->where('description', 'interest')->sum('amount');
+
+        if ($interestExpense == 0) {
+            $interestCoverage = 'Infinito (despesas de juros são zero)';
+        } else {
+            $interestCoverage = $ebit / $interestExpense;
+        }
+
+        return view('financial.interest_coverage', compact('ebit', 'interestExpense', 'interestCoverage'));
+    }
 }
