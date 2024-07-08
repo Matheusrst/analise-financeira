@@ -65,6 +65,10 @@
                         <a href="{{ route('financial.quick_ratio') }}" class="list-group-item list-group-item-action btn-secondary">Razão Rápida</a>
                         <th>|</th>
                         <a href="{{ route('financial.selling_price') }}" class="list-group-item list-group-item-action btn-secondary">Definir preço de venda</a>
+                        <th>|</th>
+                        <a href="{{ route('financial.average_collection_period') }}" class="list-group-item list-group-item-action btn-secondary">prazo medio de recebimento</a>
+                        <th>|</th>
+                        <a href="{{ route('financial.average_payment_period') }}" class="list-group-item list-group-item-action btn-secondary">prazo medio de pagamento</a>
                     </div>
                 </div>
             </div>

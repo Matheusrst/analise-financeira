@@ -107,3 +107,9 @@ Route::get('financial/interest_coverage', [FinancialAnalysisController::class, '
 
 // Rota para calcular e exibir o giro do ativo da empresa
 Route::get('financial/asset_turnover', [FinancialAnalysisController::class, 'calculateAssetTurnover'])->name('financial.asset_turnover');
+
+//rotas para calcular o prazo médio de recebimento
+Route::get('financial/average-collection-period', [FinancialAnalysisController::class, 'averageCollectionPeriod'])->name('financial.average_collection_period');
+
+//rotas para calcular prazo medio de pagamento
+Route::get('financial/average-payment-period', [FinancialAnalysisController::class, 'averagePaymentPeriod'])->name('financial.average_payment_period');

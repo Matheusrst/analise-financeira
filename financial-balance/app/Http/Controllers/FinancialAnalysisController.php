@@ -298,4 +298,36 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.asset_turnover', compact('totalRevenue', 'averageAssets', 'assetTurnover'));
     }
+
+    public function averageCollectionPeriod()
+    {
+        $receivables = Transaction::where('type', 'revenue')->get();
+    
+        $totalDays = 0;
+        foreach ($receivables as $transaction) {
+            $transactionDate = \Carbon\Carbon::parse($transaction->transaction_date);
+            $paymentDate = \Carbon\Carbon::parse($transaction->payment_date ?? $transaction->transaction_date); // Usar data da transação se payment_date não estiver disponível
+            $totalDays += $transactionDate->diffInDays($paymentDate);
+        }
+    
+        $averageCollectionPeriod = count($receivables) > 0 ? $totalDays / count($receivables) : 0;
+    
+        return view('financial.average_collection_period', compact('averageCollectionPeriod'));
+    }
+    
+    public function averagePaymentPeriod()
+    {
+        $payables = Transaction::where('type', 'expense')->get();
+    
+        $totalDays = 0;
+        foreach ($payables as $transaction) {
+            $transactionDate = \Carbon\Carbon::parse($transaction->transaction_date);
+            $paymentDate = \Carbon\Carbon::parse($transaction->payment_date ?? $transaction->transaction_date); // Usar data da transação se payment_date não estiver disponível
+            $totalDays += $transactionDate->diffInDays($paymentDate);
+        }
+    
+        $averagePaymentPeriod = count($payables) > 0 ? $totalDays / count($payables) : 0;
+    
+        return view('financial.average_payment_period', compact('averagePaymentPeriod'));
+    }
 }
