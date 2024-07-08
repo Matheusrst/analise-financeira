@@ -205,4 +205,16 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.transaction_history', compact('transactions', 'monthlyTransactions'));
     }
+
+    public function consumerDemand()
+    {
+        $transactions = Transaction::orderBy('date', 'asc')->get();
+
+        $productDemand = Transaction::selectRaw('description as product, COUNT(*) as purchase_count, SUM(amount) as total_revenue')
+            ->groupBy('product')
+            ->orderBy('purchase_count', 'desc')
+            ->get();
+
+        return view('financial.consumer_demand', compact('transactions', 'productDemand'));
+    }
 }

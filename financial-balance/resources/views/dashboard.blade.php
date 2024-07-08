@@ -33,6 +33,8 @@
                     <a href="{{ route('financial.comparative_analysis') }}" class="btn btn-info btn-block">Análise Comparativa</a>
                     <th>|</th>
                     <a href="{{ route('financial.revenue') }}" class="list-group-item list-group-item-action">Faturamento</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.consumer_demand') }}" class="list-group-item list-group-item-action">Demanda de Consumidores</a>
                 </div>
             </div>
         </div>
