@@ -217,4 +217,18 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.consumer_demand', compact('transactions', 'productDemand'));
     }
+
+    public function calculateCurrentRatio()
+    {
+        $currentAssets = Transaction::where('type', 'asset')->where('description', 'current')->sum('amount');
+        $currentLiabilities = Transaction::where('type', 'liability')->where('description', 'current')->sum('amount');
+
+        if ($currentLiabilities == 0) {
+            $currentRatio = 'Infinito (passivos circulantes são zero)';
+        } else {
+            $currentRatio = $currentAssets / $currentLiabilities;
+        }
+
+        return view('financial.current_ratio', compact('currentAssets', 'currentLiabilities', 'currentRatio'));
+    }
 }

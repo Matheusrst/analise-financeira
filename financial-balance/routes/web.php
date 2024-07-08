@@ -64,3 +64,5 @@ Route::get('financial/revenue', [FinancialAnalysisController::class, 'calculateR
 Route::get('financial/transaction_history', [FinancialAnalysisController::class, 'transactionHistory'])->name('financial.transaction_history');
 
 Route::get('financial/consumer_demand', [FinancialAnalysisController::class, 'consumerDemand'])->name('financial.consumer_demand');
+
+Route::get('financial/current_ratio', [FinancialAnalysisController::class, 'calculateCurrentRatio'])->name('financial.current_ratio');
