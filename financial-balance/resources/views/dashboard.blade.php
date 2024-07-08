@@ -88,6 +88,8 @@
                     <a href="{{ route('financial.incomeStatement') }}" class="btn btn-primary btn-block">Demonstração de Resultados</a>
                     <th>|</th>
                     <a href="{{ route('financial.transaction_history') }}" class="list-group-item list-group-item-action">Histórico de Transações</a>
+                    <th>|</th>
+                    <a href="{{ route('financial.asset_turnover') }}" class="list-group-item list-group-item-action">Giro do Ativo</a>
                 </div>
             </div>
         </div>

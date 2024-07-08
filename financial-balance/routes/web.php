@@ -69,3 +69,4 @@ Route::get('financial/current_ratio', [FinancialAnalysisController::class, 'calc
 Route::get('financial/quick_ratio', [FinancialAnalysisController::class, 'calculateQuickRatio'])->name('financial.quick_ratio');
 Route::get('financial/debt_ratio', [FinancialAnalysisController::class, 'calculateDebtRatio'])->name('financial.debt_ratio');
 Route::get('financial/interest_coverage', [FinancialAnalysisController::class, 'calculateInterestCoverage'])->name('financial.interest_coverage');
+Route::get('financial/asset_turnover', [FinancialAnalysisController::class, 'calculateAssetTurnover'])->name('financial.asset_turnover');

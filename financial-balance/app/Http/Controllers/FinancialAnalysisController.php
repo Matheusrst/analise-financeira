@@ -276,4 +276,26 @@ class FinancialAnalysisController extends Controller
 
         return view('financial.interest_coverage', compact('ebit', 'interestExpense', 'interestCoverage'));
     }
+
+    public function calculateAssetTurnover()
+    {
+        $totalRevenue = Transaction::where('type', 'revenue')->sum('amount');
+
+        $initialAssets = Asset::where('created_at', '>=', now()->subYear())->orderBy('created_at', 'asc')->first();
+        $finalAssets = Asset::where('created_at', '<=', now())->orderBy('created_at', 'desc')->first();
+
+        if ($initialAssets && $finalAssets) {
+            $averageAssets = ($initialAssets->amount + $finalAssets->amount) / 2;
+        } else {
+            $averageAssets = 0;
+        }
+
+        if ($averageAssets == 0) {
+            $assetTurnover = 'Infinito (ativos médios são zero)';
+        } else {
+            $assetTurnover = $totalRevenue / $averageAssets;
+        }
+
+        return view('financial.asset_turnover', compact('totalRevenue', 'averageAssets', 'assetTurnover'));
+    }
 }
