@@ -10,6 +10,7 @@
                     <h5 class="card-title">Custos Operacionais</h5>
                     <p class="card-text">Total: R$ {{ number_format($operationalCosts, 2, ',', '.') }}</p>
                 </div>
+                <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
             </div>
         </div>
     </div>
