@@ -234,14 +234,12 @@ class FinancialAnalysisController extends Controller
 
     public function calculateQuickRatio()
     {
-        // Obtém os valores dos ativos circulantes excluindo estoques
         $quickAssets = Transaction::where('type', 'asset')
                                   ->where('description', 'current')
                                   ->where('cost_type', '!=', 'Inventory')
                                   ->sum('amount');
         $currentLiabilities = Transaction::where('type', 'liability')->where('description', 'current')->sum('amount');
 
-        // Calcula a razão rápida
         if ($currentLiabilities == 0) {
             $quickRatio = 'Infinito (passivos circulantes são zero)';
         } else {
@@ -249,5 +247,19 @@ class FinancialAnalysisController extends Controller
         }
 
         return view('financial.quick_ratio', compact('quickAssets', 'currentLiabilities', 'quickRatio'));
+    }
+
+    public function calculateDebtRatio()
+    {
+        $totalLiabilities = Transaction::where('type', 'liability')->sum('amount');
+        $totalEquity = Transaction::where('type', 'equity')->sum('amount');
+
+        if ($totalEquity == 0) {
+            $debtRatio = 'Infinito (patrimônio líquido é zero)';
+        } else {
+            $debtRatio = $totalLiabilities / $totalEquity;
+        }
+
+        return view('financial.debt_ratio', compact('totalLiabilities', 'totalEquity', 'debtRatio'));
     }
 }
