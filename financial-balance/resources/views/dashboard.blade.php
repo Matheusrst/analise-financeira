@@ -105,6 +105,8 @@
                         <a href="{{ route('financial.transaction_history') }}" class="list-group-item list-group-item-action btn-primary">Histórico de Transações</a>
                         <th>|</th>
                         <a href="{{ route('financial.asset_turnover') }}" class="list-group-item list-group-item-action btn-primary">Giro do Ativo</a>
+                        <th>|</th>
+                        <a href="{{ route('financial.npv_form') }}" class="list-group-item list-group-item-action btn-warning">ver VPL</a>
                     </div>
                 </div>
             </div>

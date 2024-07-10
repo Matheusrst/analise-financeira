@@ -359,4 +359,40 @@ class FinancialAnalysisController extends Controller
     
         return view('financial.payback_period', compact('paybackPeriodMonths', 'initialInvestment'));
     }
+
+    public function calculateNPV(Request $request)
+{
+    $request->validate([
+        'initial_investment' => 'required|numeric',
+        'discount_rate' => 'required|numeric'
+    ]);
+
+    $initialInvestment = $request->input('initial_investment');
+    $discountRate = $request->input('discount_rate') / 100;
+
+    $transactions = Transaction::orderBy('date', 'asc')->get();
+
+    $npv = -$initialInvestment;
+    $yearlyCashFlows = [];
+
+    foreach ($transactions as $transaction) {
+        $year = \Carbon\Carbon::parse($transaction->date)->year;
+
+        if (!isset($yearlyCashFlows[$year])) {
+            $yearlyCashFlows[$year] = 0;
+        }
+
+        if ($transaction->type == 'revenue') {
+            $yearlyCashFlows[$year] += $transaction->amount;
+        } else {
+            $yearlyCashFlows[$year] -= $transaction->amount;
+        }
+    }
+
+    foreach ($yearlyCashFlows as $year => $cashFlow) {
+        $npv += $cashFlow / pow(1 + $discountRate, $year - now()->year);
+    }
+
+    return view('financial.calculate_npv', compact('npv', 'initialInvestment', 'discountRate'));
+}
 }
