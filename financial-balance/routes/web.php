@@ -122,5 +122,5 @@ Route::get('finacial/npv', function() {
     return view('financial.npv_form');
 })->name('financial.npv_form');
 
-//rota para visualizar o VPL
+//rota para ver o VPL
 Route::post('financial/calculateNPV', [FinancialAnalysisController::class, 'calculateNPV'])->name('financial_calculateNPV');
