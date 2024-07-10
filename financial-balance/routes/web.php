@@ -117,8 +117,10 @@ Route::get('financial/average-payment-period', [FinancialAnalysisController::cla
 //rotas para calcular tempo de retorno do investimento
 Route::get('financial/payback-period', [FinancialAnalysisController::class, 'paybackPeriod'])->name('financial.payback_period');
 
+//rota para calcular o VPL
 Route::get('finacial/npv', function() {
     return view('financial.npv_form');
 })->name('financial.npv_form');
 
+//rota para visualizar o VPL
 Route::post('financial/calculateNPV', [FinancialAnalysisController::class, 'calculateNPV'])->name('financial_calculateNPV');
