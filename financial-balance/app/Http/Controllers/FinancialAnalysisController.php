@@ -11,6 +11,11 @@ use Carbon\Carbon;
 
 class FinancialAnalysisController extends Controller
 {
+/**
+ * Calcula o Retorno sobre o Investimento (ROI).
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function calculateROI()
     {
         $transactions = Transaction::all();
@@ -29,6 +34,11 @@ class FinancialAnalysisController extends Controller
         return response()->json(['ROI' => $roi], 200);
     }
 
+/**
+ * Calcula o Retorno sobre o Patrimônio Líquido (ROE).
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function calculateROE()
     {
         $equity = Equity::latest()->first();
@@ -45,6 +55,11 @@ class FinancialAnalysisController extends Controller
         return response()->json(['ROE' => $roe], 200);
     }
 
+/**
+ * Calcula o Fluxo de Caixa Livre.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function calculateCashFlow()
     {
         $transactions = Transaction::all();
@@ -60,11 +75,22 @@ class FinancialAnalysisController extends Controller
         return response()->json(['FreeCashFlow' => $freecashFlow], 200);
     }
 
+/**
+ * Exibe a view para criar um novo ativo.
+ *
+ * @return \Illuminate\View\View
+ */
     public function createAsset()
     {
         return view('financial.create_asset');
     }
 
+/**
+ * Armazena um novo ativo no banco de dados.
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
     public function storeAsset(Request $request)
     {
         $request->validate([
@@ -81,11 +107,22 @@ class FinancialAnalysisController extends Controller
     }
 
 
+/**
+ * Exibe a view para criar um novo passivo.
+ *
+ * @return \Illuminate\View\View
+ */
     public function createLiability()
     {
         return view('financial.create_liability');
     }
 
+/**
+ * Armazena um novo passivo no banco de dados.
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
     public function storeLiability(Request $request)
     {
         $request->validate([
@@ -101,11 +138,22 @@ class FinancialAnalysisController extends Controller
         return redirect()->route('financial.balance_sheet')->with('sucess', 'passivo adicionado com sucesso');
     }
 
+/**
+ * Exibe a view para criar um novo patrimônio líquido.
+ *
+ * @return \Illuminate\View\View
+ */
     public function createEquity()
     {
         return view('financial.create_equity');
     }
 
+/**
+ * Armazena um novo patrimônio líquido no banco de dados.
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
     public function storeEquity(Request $request)
     {
         $request->validate([
@@ -121,6 +169,11 @@ class FinancialAnalysisController extends Controller
         return  redirect()->route('financial.balance_sheet')->with('success', 'patrimonio liquido adicionado com sucesso');
     }
 
+/**
+ * Exibe a demonstração do resultado do exercício (DRE).
+ *
+ * @return \Illuminate\View\View
+ */
     public function incomeStatement()
     {
         $revenues = Transaction::where('type', 'revenue')->sum('amount');
@@ -132,6 +185,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.income_statement', compact('revenues', 'expenses', 'netIncome'));
     }
 
+/**
+ * Exibe os custos fixos e variáveis.
+ *
+ * @return \Illuminate\View\View
+ */
     public function fixedAndVariableCosts()
     {
         $fixedCosts = Transaction::where('type', 'expense')->where('cost_type', 'fixed')->sum('amount');
@@ -141,6 +199,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.fixed_and_variable_costs', compact('fixedCosts', 'variableCosts'));
     }
 
+/**
+ * Exibe os custos operacionais.
+ *
+ * @return \Illuminate\View\View
+ */
     public function operationalCosts()
     {
         $operationalCosts = Transaction::where('type', 'expense')->where('cost_type', 'operational')->sum('amount');
@@ -148,6 +211,12 @@ class FinancialAnalysisController extends Controller
         return view('financial.operational_costs', compact('operationalCosts'));
     }
 
+/**
+ * Calcula o preço de venda com base no custo e na margem desejada.
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\View\View
+ */
     public function calculateSellingPrice(Request $request)
     {
         $request->validate([
@@ -162,6 +231,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.selling_price', compact('cost', 'desiredMargin', 'sellingPrice'));
     }
 
+ /**
+ * Calcula as receitas mensal, trimestral, semestral e anual.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateRevenue()
     {
         $now = Carbon::now();
@@ -194,6 +268,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.revenue', compact('monthlyRevenue', 'quarterlyRevenue', 'semiAnnualRevenue', 'annualRevenue'));
     }
 
+/**
+ * Exibe o histórico de transações.
+ *
+ * @return \Illuminate\View\View
+ */
     public function transactionHistory()
     {
         $transactions = Transaction::orderBy('date', 'asc')->get();
@@ -206,6 +285,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.transaction_history', compact('transactions', 'monthlyTransactions'));
     }
 
+/**
+ * Exibe a demanda dos consumidores por produtos.
+ *
+ * @return \Illuminate\View\View
+ */
     public function consumerDemand()
     {
         $transactions = Transaction::orderBy('date', 'asc')->get();
@@ -218,6 +302,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.consumer_demand', compact('transactions', 'productDemand'));
     }
 
+/**
+ * Calcula o índice de liquidez corrente.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateCurrentRatio()
     {
         $currentAssets = Transaction::where('type', 'asset')->where('description', 'current')->sum('amount');
@@ -232,6 +321,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.current_ratio', compact('currentAssets', 'currentLiabilities', 'currentRatio'));
     }
 
+/**
+ * Calcula o índice de liquidez seca.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateQuickRatio()
     {
         $quickAssets = Transaction::where('type', 'asset')
@@ -249,6 +343,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.quick_ratio', compact('quickAssets', 'currentLiabilities', 'quickRatio'));
     }
 
+/**
+ * Calcula o índice de endividamento.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateDebtRatio()
     {
         $totalLiabilities = Transaction::where('type', 'liability')->sum('amount');
@@ -263,6 +362,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.debt_ratio', compact('totalLiabilities', 'totalEquity', 'debtRatio'));
     }
 
+/**
+ * Calcula a cobertura de juros.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateInterestCoverage()
     {
         $ebit = Transaction::where('type', 'revenue')->sum('amount') - Transaction::where('type', 'expense')->where('description', '!=', 'interest')->sum('amount');
@@ -277,6 +381,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.interest_coverage', compact('ebit', 'interestExpense', 'interestCoverage'));
     }
 
+/**
+ * Calcula o giro do ativo.
+ *
+ * @return \Illuminate\View\View
+ */
     public function calculateAssetTurnover()
     {
         $totalRevenue = Transaction::where('type', 'revenue')->sum('amount');
@@ -299,6 +408,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.asset_turnover', compact('totalRevenue', 'averageAssets', 'assetTurnover'));
     }
 
+/**
+ * Calcula o período médio de cobrança.
+ *
+ * @return \Illuminate\View\View
+ */
     public function averageCollectionPeriod()
     {
         $receivables = Transaction::where('type', 'revenue')->get();
@@ -315,6 +429,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.average_collection_period', compact('averageCollectionPeriod'));
     }
     
+/**
+ * Calcula o período médio de pagamento.
+ *
+ * @return \Illuminate\View\View
+ */
     public function averagePaymentPeriod()
     {
         $payables = Transaction::where('type', 'expense')->get();
@@ -331,6 +450,11 @@ class FinancialAnalysisController extends Controller
         return view('financial.average_payment_period', compact('averagePaymentPeriod'));
     }
 
+/**
+ * Calcula o período de payback.
+ *
+ * @return \Illuminate\View\View
+ */
     public function paybackPeriod()
     {
         $transactions = Transaction::orderBy('date', 'asc')->get();
@@ -360,6 +484,12 @@ class FinancialAnalysisController extends Controller
         return view('financial.payback_period', compact('paybackPeriodMonths', 'initialInvestment'));
     }
 
+/**
+ * Calcula o Valor Presente Líquido (NPV).
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\View\View
+ */
     public function calculateNPV(Request $request)
 {
     $request->validate([
@@ -396,6 +526,12 @@ class FinancialAnalysisController extends Controller
     return view('financial.calculate_npv', compact('npv', 'initialInvestment', 'discountRate'));
 }
 
+/**
+ * Calcula a Taxa Interna de Retorno (IRR).
+ *
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\View\View
+ */
 public function calculateIRR(Request $request)
 {
     $request->validate([
@@ -432,7 +568,15 @@ public function calculateIRR(Request $request)
     return view('financial.calculate_irr', compact('irr', 'initialInvestment'));
 }
 
-
+/**
+ * Calcula a Taxa Interna de Retorno (IRR) usando o método de Newton-Raphson.
+ *
+ * @param array $cashFlows
+ * @param float $initialGuess
+ * @param float $tolerance
+ * @param int $maxIterations
+ * @return float
+ */
 private function calculateIRRUsingNewtonRaphson ($cashFlows, $initialGuess = 0.1, $tolerance = 0.0001, $maxIterations = 1000)
 {
     $irr = $initialGuess;
