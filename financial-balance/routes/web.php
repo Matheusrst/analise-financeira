@@ -124,3 +124,11 @@ Route::get('finacial/npv', function() {
 
 //rota para ver o VPL
 Route::post('financial/calculateNPV', [FinancialAnalysisController::class, 'calculateNPV'])->name('financial_calculateNPV');
+
+//rotas para calcular o IRR
+Route::get('financial/irr', function() {
+    return view('financial.irr_form');
+})->name('financial.irr_form');
+
+//rota para ver o IRR
+Route::post('financial/calculateIRR', [FinancialAnalysisController::class, 'calculateIRR'])->name('financial.calculateIRR');

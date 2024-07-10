@@ -107,6 +107,8 @@
                         <a href="{{ route('financial.asset_turnover') }}" class="list-group-item list-group-item-action btn-primary">Giro do Ativo</a>
                         <th>|</th>
                         <a href="{{ route('financial.npv_form') }}" class="list-group-item list-group-item-action btn-warning">ver VPL</a>
+                        <th>|</th>
+                        <a href="{{ route('financial.irr_form') }}" class="list-group-item list-group-item-action btn-warning">ver IRR</a>
                     </div>
                 </div>
             </div>

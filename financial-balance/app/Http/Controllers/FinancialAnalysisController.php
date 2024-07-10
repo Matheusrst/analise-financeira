@@ -395,4 +395,68 @@ class FinancialAnalysisController extends Controller
 
     return view('financial.calculate_npv', compact('npv', 'initialInvestment', 'discountRate'));
 }
+
+public function calculateIRR(Request $request)
+{
+    $request->validate([
+        'initial_investment' => 'required|numeric'
+    ]);
+
+    $initialInvestment = $request->input('initial_investment');
+
+    $transactions = Transaction::orderBy('date', 'asc')->get();
+
+    $yearlyCashFlows = [];
+
+    foreach ($transactions as $transaction) {
+        $year = \Carbon\Carbon::parse($transaction->date)->year;
+
+        if (!isset($yearlyCashFlows[$year])) {
+            $yearlyCashFlows[$year] = 0;
+        }
+
+        if ($transaction->type == 'revenue') {
+            $yearlyCashFlows[$year] += $transaction->amount;
+        } else {
+            $yearlyCashFlows[$year] -= $transaction->amount;
+        }
+    }
+
+    $cashFlows = [-$initialInvestment];
+    foreach ($yearlyCashFlows as $year => $cashFlow) {
+        $cashFlows[] = $cashFlow;
+    }
+
+    $irr = $this->calculateIRRUsingNewtonRaphson($cashFlows);
+
+    return view('financial.calculate_irr', compact('irr', 'initialInvestment'));
+}
+
+
+private function calculateIRRUsingNewtonRaphson ($cashFlows, $initialGuess = 0.1, $tolerance = 0.0001, $maxIterations = 1000)
+{
+    $irr = $initialGuess;
+    $iteration = 0;
+
+    while ($iteration < $maxIterations) {
+        $npv = 0;
+        $npvDerivative = 0;
+
+        foreach ($cashFlows as $t => $cashFlow) {
+            $npv += $cashFlow * pow(1 + $irr, -$t);
+            $npvDerivative += $t * $cashFlow * pow(1 + $irr, $t + 1);
+        }
+
+        $newIrr = $irr - $npv / $npvDerivative;
+
+        if (abs($newIrr - $irr) < $tolerance) {
+            return $newIrr;
+        }
+
+        $irr = $newIrr;
+        $iteration++;
+    }
+
+    return $irr;
+}
 }
