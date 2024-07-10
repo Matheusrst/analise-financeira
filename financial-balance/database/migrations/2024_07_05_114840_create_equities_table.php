@@ -7,22 +7,27 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
+     *
+     * Cria a tabela 'equities' com os campos necessários.
      */
     public function up(): void
     {
         Schema::create('equities', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('amount', 15, 2);
-            $table->timestamps();
+            $table->id();                    // ID único da entrada de patrimônio líquido
+            $table->decimal('amount', 15, 2);// Valor do patrimônio líquido com precisão de 15 dígitos e 2 casas decimais
+            $table->timestamps();            // Campos padrão para registro de data e hora de criação/atualização
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
+     *
+     * Remove a tabela 'equities'.
      */
     public function down(): void
     {
-        Schema::dropIfExists('equities');
+        Schema::dropIfExists('equities'); // Remove a tabela 'equities' se ela existir
     }
 };
+

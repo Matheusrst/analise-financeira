@@ -7,26 +7,26 @@ use Illuminate\Support\Facades\Schema;
 class AddPriceToTransactionsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
      *
-     * @return void
+     * Adiciona a coluna 'price' à tabela 'transactions' para armazenar o preço da transação.
      */
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->decimal('price', 15, 2)->after('profit_or_cost');
+            $table->decimal('price', 15, 2)->after('profit_or_cost'); // Adiciona um campo decimal 'price' com precisão de 15 dígitos e 2 casas decimais, após o campo 'profit_or_cost'
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
      *
-     * @return void
+     * Remove a coluna 'price' da tabela 'transactions'.
      */
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('price');
+            $table->dropColumn('price'); // Remove a coluna 'price' da tabela 'transactions'
         });
     }
 }

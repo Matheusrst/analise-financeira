@@ -7,23 +7,27 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
+     *
+     * Cria a tabela 'assets' com os campos necessários.
      */
     public function up(): void
     {
         Schema::create('assets', function (Blueprint $table) {
-            $table->id();
-            $table->string('description');
-            $table->decimal('amount', 15, 2);
-            $table->timestamps();
+            $table->id();                    // ID único do ativo
+            $table->string('description');   // Descrição do ativo como uma string
+            $table->decimal('amount', 15, 2);// Valor do ativo com precisão de 15 dígitos e 2 casas decimais
+            $table->timestamps();            // Campos padrão para registro de data e hora de criação/atualização
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
+     *
+     * Remove a tabela 'assets'.
      */
     public function down(): void
     {
-        Schema::dropIfExists('assets');
+        Schema::dropIfExists('assets'); // Remove a tabela 'assets' se ela existir
     }
 };

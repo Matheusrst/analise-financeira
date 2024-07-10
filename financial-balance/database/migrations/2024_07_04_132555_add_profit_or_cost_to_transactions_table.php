@@ -7,26 +7,27 @@ use Illuminate\Support\Facades\Schema;
 class AddProfitOrCostToTransactionsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
      *
-     * @return void
+     * Adiciona a coluna 'profit_or_cost' à tabela 'transactions' para indicar se a transação é de lucro ou custo.
      */
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->enum('profit_or_cost', ['profit', 'cost'])->after('amount');
+            $table->enum('profit_or_cost', ['profit', 'cost'])->after('amount'); // Enumeração para lucro ou custo, adicionado após o campo 'amount'
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
      *
-     * @return void
+     * Remove a coluna 'profit_or_cost' da tabela 'transactions'.
      */
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('profit_or_cost');
+            $table->dropColumn('profit_or_cost'); // Remove a coluna 'profit_or_cost' da tabela 'transactions'
         });
     }
 }
+

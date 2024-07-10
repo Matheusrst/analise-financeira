@@ -7,22 +7,26 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
+     *
+     * Adiciona a coluna 'payment_date' à tabela 'transactions', permitindo valores nulos.
      */
     public function up(): void
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->date('payment_date')->nullable();
+            $table->date('payment_date')->nullable(); // Adiciona a coluna 'payment_date' na tabela 'transactions', permitindo valores nulos
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
+     *
+     * Remove a coluna 'payment_date' da tabela 'transactions'.
      */
     public function down(): void
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('payment_date');
+            $table->dropColumn('payment_date'); // Remove a coluna 'payment_date' da tabela 'transactions'
         });
     }
 };

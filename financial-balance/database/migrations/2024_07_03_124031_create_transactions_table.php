@@ -7,21 +7,25 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migração.
+     *
+     * Cria a tabela 'transactions' com os campos necessários.
      */
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->string('description');
-            $table->decimal('amount', 15, 2);
-            $table->date('date');
-            $table->timestamps();
+            $table->id();                    // ID único da transação
+            $table->string('description');   // Descrição da transação
+            $table->decimal('amount', 15, 2);// Valor da transação com precisão decimal
+            $table->date('date');            // Data da transação
+            $table->timestamps();            // Campos padrão para registro de data e hora de criação/atualização
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migração.
+     *
+     * Remove a tabela 'transactions'.
      */
     public function down(): void
     {
