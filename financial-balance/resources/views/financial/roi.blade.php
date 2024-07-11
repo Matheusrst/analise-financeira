@@ -6,18 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internal Rate of Return (IRR)</title>
+    <title>Return on Investment (ROI)</title>
     <link rel="stylesheet" href="{{ asset('css/financial.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Internal Rate of Return (IRR)</h1>
+        <h1>Return on Investment (ROI)</h1>
         <div class="result">
-            <p>Initial Investment: {{ $initialInvestment }}</p>
-            <p>IRR: {{ $irr }}%</p>
+            <p>ROI: {{ $roi }}%</p>
         </div>
     </div>
 </body>
 </html>
-
 @endsection

@@ -31,7 +31,7 @@ class FinancialAnalysisController extends Controller
 
         $roi = ($totalProfit / $totalInvested) * 100;
 
-        return response()->json(['ROI' => $roi], 200);
+        return view('financial.roi', ['roi' => $roi]);
     }
 
 /**
@@ -52,7 +52,7 @@ class FinancialAnalysisController extends Controller
 
         $roe = ($netProfit / $equity->amount) * 100;
 
-        return response()->json(['ROE' => $roe], 200);
+        return view('financial.roe', ['roe' => $roe]);
     }
 
 /**
@@ -60,20 +60,21 @@ class FinancialAnalysisController extends Controller
  *
  * @return \Illuminate\Http\JsonResponse
  */
-    public function calculateCashFlow()
-    {
-        $transactions = Transaction::all();
+public function calculateCashFlow()
+{
+    $transactions = Transaction::all();
 
-        $totalOperationalIncome = $transactions->where('profit_or_cost', 'profit')->sum('amount');
+    $totalOperationalIncome = $transactions->where('profit_or_cost', 'profit')->sum('amount');
+    $totalOperationalExpense = $transactions->where('profit_or_cost', 'cost')->sum('amount');
 
-        $totalOperationalExpense = $transactions->where('profit_or_cost', 'cost')->sum('amount');
+    $netCashFlow = $totalOperationalIncome - $totalOperationalExpense;
 
-        $totalCapex = $transactions->where('description', 'capex')->sum('amount');
-
-        $freecashFlow = $totalOperationalIncome - $totalOperationalExpense - $totalCapex;
-
-        return response()->json(['FreeCashFlow' => $freecashFlow], 200);
-    }
+    return view('financial.cash_flow', [
+        'totalOperationalIncome' => $totalOperationalIncome,
+        'totalOperationalExpense' => $totalOperationalExpense,
+        'netCashFlow' => $netCashFlow
+    ]);
+}
 
 /**
  * Exibe a view para criar um novo ativo.
