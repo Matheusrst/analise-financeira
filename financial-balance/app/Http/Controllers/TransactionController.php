@@ -216,26 +216,26 @@ public function horizontalAnalysis()
  *
  * @return \Illuminate\Contracts\View\View
  */
-public function verticalAnalysis()
+public function showVerticalAnalysis()
 {
-    // Calcula totais de ativos, passivos e patrimônio líquido
-    $totalAssets = Transaction::where('amount', '>', 0)->sum('amount');
-    $totalLiabilities = Transaction::where('amount', '<', 0)->sum('amount');
-    $totalEquity = $totalAssets + $totalLiabilities;
-    $total = $totalAssets + abs($totalLiabilities);
+    // Calcular as porcentagens
+    $totalAssets = 100000; // Exemplo de valor
+    $totalLiabilities = 50000; // Exemplo de valor
+    $totalEquity = 50000; // Exemplo de valor
+    
+    $total = $totalAssets + $totalLiabilities + $totalEquity;
+    
+    $assetsPercentage = ($totalAssets / $total) * 100;
+    $liabilitiesPercentage = ($totalLiabilities / $total) * 100;
+    $equityPercentage = ($totalEquity / $total) * 100;
 
-    // Calcula percentuais de ativos, passivos e patrimônio líquido em relação ao total
-    $assetsPercentage = $total != 0 ? ($totalAssets / $total) * 100 : 0;
-    $liabilitiesPercentage = $total != 0 ? (abs($totalLiabilities) / $total) * 100 : 0;
-    $equityPercentage = $total != 0 ? ($totalEquity / $total) * 100 : 0;
-
-    // Retorna a view 'financial.vertical_analysis' com os percentuais calculados
-    return view('financial.vertical_analysis', compact(
-        'assetsPercentage',
-        'liabilitiesPercentage',
-        'equityPercentage'
-    ));
+    return view('financial.vertical_analysis', [
+        'assetsPercentage' => $assetsPercentage,
+        'liabilitiesPercentage' => $liabilitiesPercentage,
+        'equityPercentage' => $equityPercentage,
+    ]);
 }
+
 
 /**
  * Calcula índices financeiros com base nas transações e passa para a view.

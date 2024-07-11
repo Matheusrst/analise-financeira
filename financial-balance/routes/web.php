@@ -26,7 +26,7 @@ Route::get('financial/horizontal-analysis', [TransactionController::class, 'hori
 Route::get('financial/financial-ratios', [TransactionController::class, 'financialRatios'])->name('financial.financial_ratios');
 
 // Rota para exibir a análise vertical das demonstrações financeiras
-Route::get('financial/vertical-analysis', [TransactionController::class, 'verticalAnalysis'])->name('financial.vertical_analysis');
+Route::get('financial/vertical-analysis', [TransactionController::class, 'showVerticalAnalysis'])->name('financial.vertical_analysis');
 
 // Rota para exibir a análise comparativa do desempenho financeiro da empresa
 Route::get('financial/comparative-analysis', [TransactionController::class, 'comparativeAnalysis'])->name('financial.comparative_analysis');
