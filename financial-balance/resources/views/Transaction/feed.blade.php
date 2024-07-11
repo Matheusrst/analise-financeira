@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Adicionar Transações em Massa</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Adicionar Transações em Massa</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -56,9 +56,9 @@
                 <hr>
             </div>
         </div>
-        <button type="button" id="add-transaction" class="btn btn-secondary">Adicionar Transação</button>
+        <button type="button" id="add-transaction" class="btn btn-secondary mb-3">Adicionar Transação</button>
         <button type="submit" class="btn btn-primary">Enviar</button>
-        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
     </form>
 </div>
 

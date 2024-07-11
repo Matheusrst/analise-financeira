@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Adicionar Transação</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Adicionar Transação</h1>
     
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -51,8 +51,8 @@
             <label for="date">Data</label>
             <input type="date" class="form-control" id="date" name="date" required>
         </div>
-        <button type="submit" class="btn btn-primary">Adicionar</button>
-        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+        <button type="submit" class="btn btn-success">Adicionar</button>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
     </form>
 </div>
 @endsection
