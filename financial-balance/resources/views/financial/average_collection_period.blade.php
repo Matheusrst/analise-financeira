@@ -2,12 +2,17 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="mb-4">Prazo Médio de Recebimento (PMR)</h1>
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <h3 class="card-title">PMR: {{ $averageCollectionPeriod }} dias</h3>
-        </div>
-        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
-    </div>
+    <h1 class="mb-4 text-center">Prazo Médio de Recebimento (PMR)</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th scope="row">PMR</th>
+                <td>{{ $averageCollectionPeriod }} dias</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection
