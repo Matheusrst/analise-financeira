@@ -1,3 +1,4 @@
+<!-- Esta view exibe os Índices Financeiros, apresentando o índice de liquidez geral, lucratividade líquida, índice de dívida e índice de giro dos ativos. -->
 @extends('layouts.app')
 
 @section('content')

@@ -1,3 +1,4 @@
+<!-- Esta view exibe os custos fixos e variáveis, mostrando o total de cada categoria. -->
 @extends('layouts.app')
 
 @section('content')

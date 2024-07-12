@@ -1,3 +1,4 @@
+<!-- Esta view exibe a análise da cobertura de juros, incluindo EBIT, despesas de juros e a relação de cobertura. -->
 @extends('layouts.app')
 
 @section('content')

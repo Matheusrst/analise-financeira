@@ -1,3 +1,4 @@
+<!-- Esta view exibe as Projeções Financeiras, mostrando a receita projetada, despesas projetadas e lucro líquido projetado para cada ano. -->
 @extends('layouts.app')
 
 @section('content')

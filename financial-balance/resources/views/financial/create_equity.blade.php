@@ -1,3 +1,4 @@
+<!-- Esta view permite adicionar um novo registro de Patrimônio Líquido, incluindo campos para descrição e valor, além de exibir mensagens de erro, se houver. -->
 @extends('layouts.app')
 
 @section('content')

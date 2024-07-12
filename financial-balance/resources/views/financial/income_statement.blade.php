@@ -1,3 +1,4 @@
+<!-- Esta view exibe a demonstração de resultados, incluindo receitas, despesas e lucro líquido. -->
 @extends('layouts.app')
 
 @section('content')

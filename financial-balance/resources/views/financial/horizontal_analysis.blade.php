@@ -1,3 +1,4 @@
+<!-- Esta view exibe a análise horizontal, mostrando o montante líquido e a variação percentual por mês. -->
 @extends('layouts.app')
 
 @section('content')

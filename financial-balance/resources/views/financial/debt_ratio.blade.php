@@ -1,3 +1,4 @@
+<!-- Esta view exibe o Índice de Endividamento, apresentando os passivos totais, patrimônio líquido e o cálculo do índice de endividamento, além de uma interpretação sobre seu significado. -->
 @extends('layouts.app')
 
 @section('content')

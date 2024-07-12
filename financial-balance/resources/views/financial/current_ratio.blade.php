@@ -1,3 +1,4 @@
+<!-- Esta view exibe a Razão Corrente, mostrando os ativos e passivos circulantes, além do cálculo da razão corrente e uma observação sobre sua interpretação. -->
 @extends('layouts.app')
 
 @section('content')
