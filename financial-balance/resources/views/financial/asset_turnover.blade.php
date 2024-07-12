@@ -1,16 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Giro do Ativo</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Giro do Ativo</h1>
 
-    <h2>Receita Total: {{ $totalRevenue }}</h2>
-    <h2>Ativos Totais Médios: {{ $averageAssets }}</h2>
-
-    <h3>Giro do Ativo: {{ is_numeric($assetTurnover) ? number_format($assetTurnover, 2) : $assetTurnover }}</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Receita Total</td>
+                <td>{{ number_format($totalRevenue, 2, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td>Ativos Totais Médios</td>
+                <td>{{ number_format($averageAssets, 2, ',', '.') }}</td>
+            </tr>
+            <tr>
+                <td>Giro do Ativo</td>
+                <td>{{ is_numeric($assetTurnover) ? number_format($assetTurnover, 2) : $assetTurnover }}</td>
+            </tr>
+        </tbody>
+    </table>
 
     <p>Um giro do ativo maior indica melhor eficiência em utilizar os ativos para gerar receita.</p>
 
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection

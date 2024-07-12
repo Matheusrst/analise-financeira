@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Demonstração de Resultados</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Demonstração de Resultados</h1>
     
     <table class="table table-bordered">
         <thead>
@@ -26,6 +26,6 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Histórico de Transações</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Histórico de Transações</h1>
 
     <h2>Todas as Transações</h2>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Data</th>
@@ -20,14 +20,14 @@
                     <td>{{ $transaction->date }}</td>
                     <td>{{ $transaction->description }}</td>
                     <td>{{ $transaction->type }}</td>
-                    <td>{{ $transaction->amount }}</td>
+                    <td>{{ number_format($transaction->amount, 2, ',', '.') }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
     <h2>Transações Mensais</h2>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Ano</th>
@@ -40,11 +40,12 @@
                 <tr>
                     <td>{{ $monthly->year }}</td>
                     <td>{{ $monthly->month }}</td>
-                    <td>{{ $monthly->total_amount }}</td>
+                    <td>{{ number_format($monthly->total_amount, 2, ',', '.') }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection
