@@ -1,3 +1,4 @@
+{{-- Esta view permite ao usuário adicionar transações em massa, preenchendo um formulário dinâmico para várias transações, com campos para descrição, valor, tipo e data. --}}
 @extends('layouts.app')
 
 @section('content')

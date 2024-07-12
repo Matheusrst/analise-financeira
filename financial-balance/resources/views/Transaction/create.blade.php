@@ -1,3 +1,5 @@
+{{-- Esta view é utilizada para adicionar uma nova transação, permitindo que o usuário insira detalhes como descrição, valor, tipo, e data. --}}
+
 @extends('layouts.app')
 
 @section('content')

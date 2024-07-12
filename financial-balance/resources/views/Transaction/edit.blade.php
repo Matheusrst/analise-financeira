@@ -1,3 +1,5 @@
+{{-- Esta view permite que o usuário edite uma transação existente, atualizando detalhes como descrição, valor e data. --}}
+
 @extends('layouts.app')
 
 @section('content')

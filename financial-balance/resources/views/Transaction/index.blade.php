@@ -1,6 +1,9 @@
+{{-- Esta view exibe uma lista de transações, permitindo ao usuário visualizar detalhes como ID, descrição, montante, tipo e data. O usuário também pode adicionar uma nova transação através de um botão. --}}
+
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Transações</h1>
     <a href="{{ route('transactions.create') }}" class="btn btn-success mb-3">Adicionar Transação</a>
