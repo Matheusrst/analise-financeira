@@ -1,3 +1,4 @@
+<!-- Esta view exibe o fluxo de caixa, apresentando a receita operacional total, a despesa operacional total e o fluxo de caixa líquido. -->
 @extends('layouts.app')
 
 @section('content')

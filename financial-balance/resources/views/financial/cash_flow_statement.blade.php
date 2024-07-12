@@ -1,3 +1,4 @@
+<!-- Esta view apresenta a Demonstração do Fluxo de Caixa, detalhando entradas, saídas e o fluxo de caixa líquido por mês. -->
 @extends('layouts.app')
 
 @section('content')
@@ -23,6 +24,6 @@
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">Voltar</a>
 </div>
 @endsection

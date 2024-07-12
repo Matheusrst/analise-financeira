@@ -1,3 +1,4 @@
+<!-- Esta view apresenta a Taxa Interna de Retorno (TIR), exibindo o investimento inicial e o valor da TIR. -->
 @extends('layouts.app')
 
 @section('content')

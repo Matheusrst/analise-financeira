@@ -1,3 +1,4 @@
+<!-- Esta view apresenta uma Análise Comparativa, mostrando diversos índices financeiros da empresa em comparação com a média da indústria. -->
 @extends('layouts.app')
 
 @section('content')

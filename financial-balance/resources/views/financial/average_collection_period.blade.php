@@ -1,3 +1,5 @@
+<!-- Esta view apresenta o Prazo Médio de Recebimento (PMR), que indica o tempo médio que a empresa leva para receber pagamentos. -->
+ 
 @extends('layouts.app')
 
 @section('content')

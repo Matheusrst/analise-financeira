@@ -1,3 +1,5 @@
+<!-- Esta view exibe informações sobre o giro do ativo, incluindo receita total, ativos totais médios e o cálculo do giro do ativo. -->
+ 
 @extends('layouts.app')
 
 @section('content')

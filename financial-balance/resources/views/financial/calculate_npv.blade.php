@@ -1,3 +1,4 @@
+<!-- Esta view apresenta o Valor Presente Líquido (VPL), detalhando o investimento inicial, a taxa de desconto e o cálculo do VPL. -->
 @extends('layouts.app')
 
 @section('content')

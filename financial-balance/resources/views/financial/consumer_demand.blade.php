@@ -1,3 +1,4 @@
+<!-- Esta view apresenta a Demanda de Consumidores, mostrando transações recentes e a demanda por produto, incluindo quantidades compradas e receita total. -->
 @extends('layouts.app')
 
 @section('content')

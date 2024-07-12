@@ -1,3 +1,4 @@
+<!-- Esta view apresenta o Prazo Médio de Pagamento (PMP), que indica o tempo médio que a empresa leva para pagar suas obrigações. -->
 @extends('layouts.app')
 
 @section('content')

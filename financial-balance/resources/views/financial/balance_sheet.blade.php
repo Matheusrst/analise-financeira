@@ -1,3 +1,4 @@
+<!-- Esta view apresenta o Balanço Patrimonial, detalhando Ativos, Passivos e Patrimônio Líquido, além da equação contábil. -->
 @extends('layouts.app')
 
 @section('content')
