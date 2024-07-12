@@ -1,3 +1,4 @@
+<!-- Esta view exibe o faturamento mensal, trimestral, semestral e anual, permitindo análise de desempenho ao longo do tempo. -->
 @extends('layouts.app')
 
 @section('content')

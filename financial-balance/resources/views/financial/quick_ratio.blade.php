@@ -1,3 +1,4 @@
+<!-- Esta view exibe a razão rápida, mostrando ativos circulantes (excluindo estoques) e passivos circulantes. -->
 @extends('layouts.app')
 
 @section('content')

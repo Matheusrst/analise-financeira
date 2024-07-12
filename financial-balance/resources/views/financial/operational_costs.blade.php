@@ -1,3 +1,4 @@
+<!-- Esta view exibe os custos operacionais totais formatados para o usuário. -->
 @extends('layouts.app')
 
 @section('content')

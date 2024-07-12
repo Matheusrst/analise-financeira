@@ -1,3 +1,4 @@
+<!-- Esta view exibe o Retorno sobre o Patrimônio Líquido (ROE) e lida com possíveis erros na entrada de dados. -->
 @extends('layouts.app')
 
 @section('content')

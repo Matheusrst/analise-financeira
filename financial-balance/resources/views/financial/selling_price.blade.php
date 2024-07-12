@@ -1,3 +1,4 @@
+<!-- Esta view permite calcular o preço de venda com base no custo e na margem de lucro desejada. -->
 @extends('layouts.app')
 
 @section('content')

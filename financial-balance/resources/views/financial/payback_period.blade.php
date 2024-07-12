@@ -1,3 +1,4 @@
+<!-- Esta view exibe o período de payback e o investimento inicial formatado para o usuário. -->
 @extends('layouts.app')
 
 @section('content')

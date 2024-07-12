@@ -1,3 +1,4 @@
+<!-- Esta view exibe a análise vertical, mostrando a porcentagem dos ativos, passivos e patrimônio líquido. -->
 @extends('layouts.app')
 
 @section('content')

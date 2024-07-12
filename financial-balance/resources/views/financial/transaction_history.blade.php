@@ -1,3 +1,4 @@
+<!-- Esta view exibe o histórico de transações, incluindo transações detalhadas e totais mensais. -->
 @extends('layouts.app')
 
 @section('content')

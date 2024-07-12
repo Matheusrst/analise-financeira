@@ -1,3 +1,4 @@
+<!-- Esta view exibe o Retorno sobre o Investimento (ROI). -->
 @extends('layouts.app')
 
 @section('content')

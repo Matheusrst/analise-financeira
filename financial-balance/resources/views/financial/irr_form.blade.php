@@ -1,3 +1,4 @@
+<!-- Esta view permite ao usuário calcular a Taxa Interna de Retorno (TIR) com um investimento inicial. -->
 @extends('layouts.app')
 
 @section('content')

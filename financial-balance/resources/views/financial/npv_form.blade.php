@@ -1,3 +1,4 @@
+<!-- Esta view permite ao usuário calcular o Valor Presente Líquido (VPL) com um investimento inicial e uma taxa de desconto. -->
 @extends('layouts.app')
 
 @section('content')
