@@ -1,16 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Razão Rápida</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Razão Rápida</h1>
 
-    <h2>Ativos Circulantes (excluindo estoques): {{ $quickAssets }}</h2>
-    <h2>Passivos Circulantes: {{ $currentLiabilities }}</h2>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2>Ativos Circulantes (excluindo estoques)</h2>
+            <p>R$ {{ number_format($quickAssets, 2, ',', '.') }}</p>
+        </div>
+    </div>
 
-    <h3>Razão Rápida: {{ is_numeric($quickRatio) ? number_format($quickRatio, 2) : $quickRatio }}</h3>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2>Passivos Circulantes</h2>
+            <p>R$ {{ number_format($currentLiabilities, 2, ',', '.') }}</p>
+        </div>
+    </div>
 
-    <p>Uma razão rápida maior que 1 é geralmente considerada saudável.</p>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3>Razão Rápida</h3>
+            <p>{{ is_numeric($quickRatio) ? number_format($quickRatio, 2) : $quickRatio }}</p>
+        </div>
+    </div>
 
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+    <div class="alert alert-info" role="alert">
+        <p>Uma razão rápida maior que 1 é geralmente considerada saudável.</p>
+    </div>
+
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection

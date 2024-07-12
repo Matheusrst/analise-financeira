@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Projeções Financeiras</h1>
-    <table border="1">
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Projeções Financeiras</h1>
+
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Ano</th>
@@ -14,15 +15,15 @@
         </thead>
         <tbody>
             @foreach($projections as $projection)
-            <tr>
-                <td>{{ $projection['year'] }}</td>
-                <td>{{ number_format($projection['revenue'], 2) }}</td>
-                <td>{{ number_format($projection['expenses'], 2) }}</td>
-                <td>{{ number_format($projection['net_income'], 2) }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $projection['year'] }}</td>
+                    <td>R$ {{ number_format($projection['revenue'], 2, ',', '.') }}</td>
+                    <td>R$ {{ number_format($projection['expenses'], 2, ',', '.') }}</td>
+                    <td>R$ {{ number_format($projection['net_income'], 2, ',', '.') }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
 </div>
 @endsection

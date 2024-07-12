@@ -15,6 +15,7 @@
         <div class="result">
             <p>ROI: {{ $roi }}%</p>
         </div>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
     </div>
 </body>
 </html>

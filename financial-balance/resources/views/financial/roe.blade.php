@@ -21,6 +21,7 @@
                 <p>ROE: {{ $roe }}%</p>
             </div>
         @endif
+        <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
     </div>
 </body>
 </html>
