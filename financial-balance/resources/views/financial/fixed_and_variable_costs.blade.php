@@ -19,7 +19,7 @@
                     <p class="card-text">Total: R$ {{ number_format($variableCosts, 2, ',', '.') }}</p>
                 </div>
             </div>
-            <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">voltar</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-primary mt-3">Voltar</a>
         </div>
     </div>
 </div>
