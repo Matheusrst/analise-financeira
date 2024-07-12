@@ -1,3 +1,5 @@
+<!-- esta view  é reponsavel por cer o painel de controle principal aonde o usuario tem acesso a todas as outras funcionalidades do codigo -->
+
 @extends('layouts.app')
 
 @section('content')
