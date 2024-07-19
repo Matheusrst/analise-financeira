@@ -31,7 +31,7 @@ Este projeto é uma aplicação de análise financeira desenvolvida com Laravel 
 - Node.js e npm para compilação de assets front-end (opcional)
 
 ## Instalação
-```markdown
+
 1. **Clone o Repositório**
 
     ```bash
@@ -111,7 +111,8 @@ Este é um projeto open source de codigo e licença aberta sem nehuma finalidade
 
 ## Contato
 
-Para dúvidas ou sugestões, entre em contato:
+Para mais informações, entre em contato:
 
+- **Nome**: Matheus Ribeiro De Sales Tiné
 - **E-mail**: matheusriberomatheus@gmail.com
 - **GitHub**: [Matheusrst](https://github.com/Matheusrst)
