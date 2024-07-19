@@ -114,4 +114,4 @@ Este é um projeto open source de codigo e licença aberta sem nehuma finalidade
 Para dúvidas ou sugestões, entre em contato:
 
 - **E-mail**: matheusriberomatheus@gmail.com
-- **GitHub**: [Seu Perfil GitHub](https://github.com/Matheusrst)
+- **GitHub**: [Matheusrst](https://github.com/Matheusrst)
