@@ -1,4 +1,4 @@
-```markdown
+
 # Aplicação de Análise Financeira em Laravel
 
 Este projeto é uma aplicação de análise financeira desenvolvida com Laravel 10. A aplicação permite gerenciar transações financeiras, realizar análises financeiras, e gerar relatórios e projeções. Inclui funcionalidades para o cálculo de índices financeiros, balanços patrimoniais, fluxo de caixa e muito mais.
@@ -31,7 +31,7 @@ Este projeto é uma aplicação de análise financeira desenvolvida com Laravel 
 - Node.js e npm para compilação de assets front-end (opcional)
 
 ## Instalação
-
+```markdown
 1. **Clone o Repositório**
 
     ```bash
